@@ -1,0 +1,34 @@
+@import '../common/colors'
+@import '../common/font'
+
+.filter-bar-full
+  .filter-bar
+    background-color: $light-gray
+    border-radius: 5px
+    display: flex
+    align-items: center
+    .filter-bar-text
+      margin: 20px
+      font-size: 18px
+    .filter-left-text
+      @include bold-font
+      color: $light-blue
+    .filter-split-bar
+      height: 80%
+      width: 1.5px
+      background-color: $dark-gray
+    .filter-right-text
+      @include bold-font
+      color: $charcoal
+    .filter-list-container
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      .filter-input-container
+        display: flex
+        flex-direction: row
+        align-items: center
+        .input-radio
+        .input-text
+    .question-button

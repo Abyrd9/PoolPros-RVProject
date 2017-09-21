@@ -1,0 +1,51 @@
+@import '../common/colors'
+@import '../common/font'
+
+.nav-bar-full
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  margin-bottom: 20px
+  .nav-bar
+    display: flex
+    .nav-left-content
+      flex: 1
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      .logo
+    .nav-right-content
+      flex: 1.5
+      display: flex
+      flex-direction: row
+      justify-content: flex-end
+      align-items: center
+      .navigation-container
+        display: flex
+        flex-direction: row
+        .navigation-list
+          padding: 30px
+          a
+            text-decoration: none
+            color: $dark-blue
+            @include bold-font
+            font-size: 16px
+      .nav-button
+        display: flex
+        flex-direction: row
+        align-items: center
+        background-color: white
+        border: 2px solid $light-blue
+        border-radius: 3px
+        padding: 12px 20px
+        margin-left: 30px
+        .fa-map-marker
+          margin: 0
+          padding: 0
+          margin-right: 10px
+          color: $light-blue
+          font-size: 22px
+        .nav-button-text
+          margin: 0
+          padding: 0
+          @include bold-font
+          color: $light-blue
+          font-size: 16px
