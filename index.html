@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+    <!--Top Header Bar -->
     <div class="full-width header-bar-full">
       <div class="main-container header-bar">
         <div class="header-bar-link-container">
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-
+    <!--Top Nav Bar-->
     <div class="full-width nav-bar-full">
       <div class="main-container nav-bar">
         <div class="nav-left-content">
@@ -52,11 +52,11 @@
         </div>
       </div>
     </div>
-
+    <!--Banner Image-->
     <div class="full-width header-image">
       <img src="./img/water-image.png" alt="water-image-banner" class="image-banner">
     </div>
-
+    <!--Filter Bar-->
     <div class="full-width filter-bar-full">
       <div class="main-container filter-bar">
         <p class="filter-bar-text filter-left-text">7 dealers in 28226</p>
@@ -64,23 +64,91 @@
         <p class="filter-bar-text filter-right-text">Filter Results</p>
         <div class="filter-list-container">
           <div class="filter-input-container">
-            <input type="radio" name="service" class="input-radio"></input>
-            <p class="input-text">Service</p>
+            <div class="checkbox-input-container">
+              <label for="first-input"></label>
+              <input type="checkbox" id="first-input" value="none" name="check" checked/>
+            </div>
+            <p class="input-text">service</p>
           </div>
           <div class="filter-input-container">
-            <input type="radio" name="installation" class="input-radio"></input>
-            <p class="input-text">Service</p>
+            <div class="checkbox-input-container">
+              <label for="second-input"></label>
+              <input type="checkbox" id="second-input" value="none" name="check" checked/>
+            </div>
+            <p class="input-text">installation</p>
           </div>
           <div class="filter-input-container">
-            <input type="radio" name="residential" class="input-radio"></input>
-            <p class="input-text">Service</p>
+            <div class="checkbox-input-container">
+              <label for="third-input"></label>
+              <input type="checkbox" id="third-input" value="none" name="check" checked/>
+            </div>
+            <p class="input-text">residential</p>
           </div>
           <div class="filter-input-container">
-            <input type="radio" name="commercial" class="input-radio"></input>
-            <p class="input-text">Service</p>
+            <div class="checkbox-input-container">
+              <label for="fourth-input"></label>
+              <input type="checkbox" id="fourth-input" value="none" name="check" checked/>
+            </div>
+            <p class="input-text">commercial</p>
           </div>
         </div>
         <button class="question-button">?</button>
+      </div>
+    </div>
+    <!--Information Cards-->
+    <div class="full-width card-container-full">
+      <div class="main-container card-container">
+
+        <!--example Card to set styling-->
+        <div class="card">
+          <div class="card-title-container">
+            <h2 class="card-title">Aqua Experts</h2>
+          </div>
+          <div class="card-content-container">
+            <div class="card-content-top">
+              <div class="number-container">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <p class="phone-number">1.888.888.8888</p>
+              </div>
+              <p class="number-sub-text">Can’t talk now? Click below to send an email.</p>
+            </div>
+            <div class="card-content-middle">
+              <button class="card-button">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <p class="card-button-text">Contact this Pro</p>
+              </button>
+            </div>
+            <div class="card-content-bottom">
+              <h4 class="card-content-bottom-title">Business House</h4>
+              <p class="card-content-bottom-text">Weekdays 7:00am - 7:00pm <br> Saturdays 7:00am - 3:00pm <br> Sundays - CLOSED</p>
+            </div>
+          </div>
+          <div class="card-footer-container">
+            <div class="card-footer-content-container">
+              <!--Installation Pro-->
+              <div class="footer-text-container">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="footer-text">Installation Pro</p>
+              </div>
+              <!--Residential Pro-->
+              <div class="footer-text-container">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="footer-text">Installation Pro</p>
+              </div>
+              <!--Service Pro-->
+              <div class="footer-text-container">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="footer-text">Installation Pro</p>
+              </div>
+              <!--Commercial Pro-->
+              <div class="footer-text-container">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p class="footer-text">Installation Pro</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
