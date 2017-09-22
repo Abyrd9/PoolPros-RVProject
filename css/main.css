@@ -47,6 +47,7 @@ button {
         .header-bar-full .header-bar .header-bar-link-container .header-bar-link a {
           font-family: "Open Sans", sans-serif;
           font-weight: 400;
+          color: #3F3F3F;
           color: white;
           text-decoration: none; }
     .header-bar-full .header-bar .fa-share-square-o {
@@ -83,6 +84,7 @@ button {
             color: #083D8C;
             font-family: "Open Sans", sans-serif;
             font-weight: 700;
+            color: #3F3F3F;
             font-size: 16px; }
       .nav-bar-full .nav-bar .nav-right-content .nav-button {
         display: flex;
@@ -104,6 +106,7 @@ button {
           padding: 0;
           font-family: "Open Sans", sans-serif;
           font-weight: 700;
+          color: #3F3F3F;
           color: #216DDF;
           font-size: 16px; }
 
@@ -112,7 +115,7 @@ button {
   height: 13vw; }
 
 .filter-bar-full .filter-bar {
-  background-color: #ECECEC;
+  background-color: #F6F6F6;
   border-radius: 5px;
   display: flex;
   align-items: center; }
@@ -122,14 +125,16 @@ button {
   .filter-bar-full .filter-bar .filter-left-text {
     font-family: "Open Sans", sans-serif;
     font-weight: 700;
+    color: #3F3F3F;
     color: #216DDF; }
   .filter-bar-full .filter-bar .filter-split-bar {
     height: 80%;
-    width: 1.5px;
-    background-color: #D8D8D8; }
+    width: 3px;
+    background-color: #ECECEC; }
   .filter-bar-full .filter-bar .filter-right-text {
     font-family: "Open Sans", sans-serif;
     font-weight: 700;
+    color: #3F3F3F;
     color: #3F3F3F; }
   .filter-bar-full .filter-bar .filter-list-container {
     display: flex;
@@ -176,11 +181,13 @@ button {
       .filter-bar-full .filter-bar .filter-list-container .filter-input-container .input-text {
         font-family: "Open Sans", sans-serif;
         font-weight: 400;
+        color: #3F3F3F;
         text-transform: capitalize;
         font-size: 16px; }
   .filter-bar-full .filter-bar .question-button {
     font-family: "Open Sans", sans-serif;
     font-weight: 700;
+    color: #3F3F3F;
     color: #216DDF;
     background-color: #D8D8D8;
     width: 30px;
@@ -188,5 +195,149 @@ button {
     border-radius: 3px; }
     .filter-bar-full .filter-bar .question-button:hover {
       cursor: pointer; }
+
+.card-container-full .card-container {
+  display: flex;
+  flex-flow: wrap; }
+  .card-container-full .card-container .card {
+    max-width: 400px;
+    margin: 25px;
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 10px; }
+    .card-container-full .card-container .card .card-title-container {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0px;
+      border-bottom: 1.5px solid #ECECEC;
+      margin-bottom: 10px; }
+      .card-container-full .card-container .card .card-title-container .card-title {
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+        color: #3F3F3F;
+        color: #3F3F3F; }
+    .card-container-full .card-container .card .card-content-container {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .card-container-full .card-container .card .card-content-container .card-content-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 15px; }
+        .card-container-full .card-container .card .card-content-container .card-content-top .number-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          width: 68%; }
+          .card-container-full .card-container .card .card-content-container .card-content-top .number-container .fa-phone {
+            color: white;
+            background-color: #216DDF;
+            padding: 6px 8px;
+            border-radius: 100%;
+            align-self: center; }
+          .card-container-full .card-container .card .card-content-container .card-content-top .number-container .phone-number {
+            font-family: "Open Sans", sans-serif;
+            font-weight: 800;
+            color: #3F3F3F;
+            font-size: 24px;
+            align-self: center;
+            margin: 0;
+            padding: 0;
+            color: #3F3F3F; }
+        .card-container-full .card-container .card .card-content-container .card-content-top .number-sub-text {
+          font-family: "Open Sans", sans-serif;
+          font-weight: 400;
+          color: #3F3F3F;
+          font-size: 11px;
+          font-style: italic;
+          margin: 10px 0px; }
+      .card-container-full .card-container .card .card-content-container .card-content-middle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px; }
+        .card-container-full .card-container .card .card-content-container .card-content-middle .card-button {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 10px 25px;
+          border: 2px solid #02C7C6;
+          border-radius: 3px; }
+          .card-container-full .card-container .card .card-content-container .card-content-middle .card-button .fa-envelope {
+            color: #083D8C;
+            margin-right: 10px; }
+          .card-container-full .card-container .card .card-content-container .card-content-middle .card-button .card-button-text {
+            margin: 0;
+            padding: 0;
+            color: #083D8C;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 700;
+            color: #3F3F3F; }
+      .card-container-full .card-container .card .card-content-container .card-content-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 35px 0px; }
+        .card-container-full .card-container .card .card-content-container .card-content-bottom .card-content-bottom-title {
+          padding: 0;
+          margin: 0;
+          font-family: "Open Sans", sans-serif;
+          font-weight: 700;
+          color: #3F3F3F;
+          font-size: 12px; }
+        .card-container-full .card-container .card .card-content-container .card-content-bottom .card-content-bottom-text {
+          margin: 0;
+          padding: 0;
+          text-align: center;
+          font-family: "Open Sans", sans-serif;
+          font-weight: 400;
+          color: #3F3F3F;
+          font-size: 12px;
+          line-height: 18px; }
+    .card-container-full .card-container .card .card-footer-container {
+      width: 100%;
+      border-radius: 0px 0px 10px 10px;
+      background-color: #F6F6F6;
+      display: flex;
+      justify-content: center;
+      padding: 20px 0px; }
+      .card-container-full .card-container .card .card-footer-container .card-footer-content-container {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; }
+        .card-container-full .card-container .card .card-footer-container .card-footer-content-container .footer-text-container {
+          width: 40%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          margin: 5px; }
+          .card-container-full .card-container .card .card-footer-container .card-footer-content-container .footer-text-container .fa-card-icon {
+            color: #D8D8D8;
+            font-size: 12px;
+            margin-right: 10px; }
+          .card-container-full .card-container .card .card-footer-container .card-footer-content-container .footer-text-container .footer-text {
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 400;
+            color: #3F3F3F;
+            font-size: 12px;
+            color: #3F3F3F; }
 
 /*# sourceMappingURL=main.css.map */

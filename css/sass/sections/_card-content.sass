@@ -1,0 +1,133 @@
+@import '../common/colors'
+@import '../common/font'
+
+.card-container-full
+  .card-container
+    display: flex
+    flex-flow: wrap
+    .card
+      max-width: 400px
+      margin: 25px
+      flex: 1 1 100%
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      box-shadow: 0 0px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+      border-radius: 10px
+      .card-title-container
+        width: 90%
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: 20px 0px
+        border-bottom: 1.5px solid $light-gray
+        margin-bottom: 10px
+        .card-title
+          margin: 0
+          padding: 0
+          @include light-font
+          color: $charcoal
+      .card-content-container
+        width: 80%
+        display: flex
+        flex-direction: column
+        align-items: center
+        .card-content-top
+          display: flex
+          flex-direction: column
+          align-items: center
+          width: 100%
+          margin-top: 15px
+          .number-container
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            align-items: center
+            width: 68%
+            .fa-phone
+              color: white
+              background-color: $light-blue
+              padding: 6px 8px
+              border-radius: 100%
+              align-self: center
+            .phone-number
+              @include extra-bold-font
+              font-size: 24px
+              align-self: center
+              margin: 0
+              padding: 0
+              color: $charcoal
+          .number-sub-text
+            @include regular-font
+            font-size: 11px
+            font-style: italic
+            margin: 10px 0px
+        .card-content-middle
+          display: flex
+          flex-direction: column
+          align-items: center
+          width: 100%
+          margin-top: 10px
+          .card-button
+            display: flex
+            flex-direction: row
+            align-items: center
+            padding: 10px 25px
+            border: 2px solid $green
+            border-radius: 3px
+            .fa-envelope
+              color: $dark-blue
+              margin-right: 10px
+            .card-button-text
+              margin: 0
+              padding: 0
+              color: $dark-blue
+              @include bold-font
+        .card-content-bottom
+          display: flex
+          flex-direction: column
+          align-items: center
+          width: 100%
+          margin: 35px 0px
+          .card-content-bottom-title
+            padding: 0
+            margin: 0
+            @include bold-font
+            font-size: 12px
+          .card-content-bottom-text
+            margin: 0
+            padding: 0
+            text-align: center
+            @include regular-font
+            font-size: 12px
+            line-height: 18px
+      .card-footer-container
+        width: 100%
+        border-radius: 0px 0px 10px 10px
+        background-color: $soft-white
+        display: flex
+        justify-content: center
+        padding: 20px 0px
+        .card-footer-content-container
+          width: 80%
+          display: flex
+          flex-wrap: wrap
+          justify-content: space-between
+          .footer-text-container
+            width: 40%
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: flex-start
+            margin: 5px
+            .fa-card-icon
+              color: $dark-gray
+              font-size: 12px
+              margin-right: 10px
+            .footer-text
+              padding: 0
+              margin: 0
+              @include regular-font
+              font-size: 12px
+              color: $charcoal
