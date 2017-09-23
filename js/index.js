@@ -170,8 +170,9 @@ var handlers = {
 
 }
 
-
+filter.fetchData(filter.filterStatus);
 handlers.filterInputEventListener();
+
 
 // switch to const and let
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
