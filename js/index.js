@@ -89,32 +89,14 @@ var filter = {
                        '    </div>' +
                        '    <div class="card-content-bottom">' +
                        '      <h4 class="card-content-bottom-title">Business House</h4>' +
-                       '      <p class="card-content-bottom-text">Weekdays ' + cardData.data.weekHours.mon + '<br>Saturdays ' + cardData.data.weekHours.sat + '<br>Sundays ' + dataSifting.sundayCalc(cardData) + '</p>' +
+                       '      <p class="card-content-bottom-text">Weekdays ' + cardData.data.weekHours.mon + '<br>Saturdays ' + dataSifting.saturdayCalc(cardData) + '<br>Sundays ' + dataSifting.sundayCalc(cardData) + '</p>' +
                        '    </div>' +
                        '  </div>' +
-                       '  <div class="card-footer-container">' +
-                       '    <div class="card-footer-content-container">' +
-                       '      <div class="footer-text-container">' +
-                       '        <i class="fa fa-star fa-card-icon" aria-hidden="true"></i>' +
-                       '        <p class="footer-text">Installation Pro</p>' +
-                       '      </div>' +
-                       '      <div class="footer-text-container">' +
-                       '        <i class="fa fa-cog fa-card-icon" aria-hidden="true"></i>' +
-                       '        <p class="footer-text">Service Pro</p>' +
-                       '      </div>' +
-                       '      <div class="footer-text-container">' +
-                       '        <i class="fa fa-home fa-card-icon" aria-hidden="true"></i>' +
-                       '        <p class="footer-text">Residential Pro</p>' +
-                       '      </div>' +
-                       '      <div class="footer-text-container">' +
-                       '        <i class="fa fa-user fa-card-icon" aria-hidden="true"></i>' +
-                       '        <p class="footer-text">Commercial Pro</p>' +
-                       '      </div>' +
-                       '    </div>' +
-                       '  </div>';
+                       '  <div class="card-footer-container">' + dataSifting.footerContentFilter(cardData) + '</div></div>';
     //insert HTML card template into the card
     card.innerHTML = cardElement;
-  },
+    console.log(card);
+  }
 }
 
 var dataSifting = {
@@ -122,9 +104,44 @@ var dataSifting = {
     var weekHoursObj = cardData.data.weekHours;
     if (weekHoursObj.sun === "") {
       return "- CLOSED"
+    } else if (weekHoursObj.sun === "On Call") {
+      return "- " + weekHoursObj.sun
     } else {
       return weekHoursObj.sun
     }
+  },
+  saturdayCalc: function(cardData) {
+    var weekHoursObj = cardData.data.weekHours;
+    if (weekHoursObj.sat === "") {
+      return "- CLOSED"
+    } else {
+      return weekHoursObj.sat
+    }
+  },
+  footerContentFilter: function(cardData) {
+    var cert = cardData.data.certifications;
+    var footerElements = {
+      Element: ""
+    }
+    cert.forEach(function(e, i, arr) {
+      var starIcon = '<i class="fa fa-star fa-card-icon" aria-hidden="true"></i>'
+      var cogIcon = '<i class="fa fa-cog fa-card-icon" aria-hidden="true"></i>'
+      var houseIcon = '<i class="fa fa-home fa-card-icon" aria-hidden="true"></i>'
+      var userIcon = '<i class="fa fa-user fa-card-icon" aria-hidden="true"></i>'
+      var currentIcon = ""
+      if (e === "Installation Pro") {
+        currentIcon = starIcon;
+      } else if (e === "Service Pro") {
+        currentIcon = cogIcon;
+      } else if (e === "Residential Pro") {
+        currentIcon = houseIcon;
+      } else if (e === "Commercial Pro") {
+        currentIcon = userIcon;
+      }
+      footerElements.Element = footerElements.Element + '<div class="footer-text-container">' + currentIcon + '<p class="footer-text">' + cert[i] + '</p>' + '</div>'
+    })
+    console.log(footerElements.Element)
+    return footerElements.Element
   }
 
 }
