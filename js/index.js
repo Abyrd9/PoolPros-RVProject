@@ -160,13 +160,12 @@ const cardModal = {
   createModal: function(button) {
     const dealerTitle = button.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].innerHTML;
     const modal = `
-    <div class="full-modal-container">
       <div class="modal-card">
         <div class="modal-header-container">
           <div class="modal-header-content-container">
             <div class="modal-header-left-container">
               <h4 class="modal-title-one">email</h4>
-              <h2 class="modal-title-two">dealer name</h2>
+              <h2 class="modal-title-two">${dealerTitle}</h2>
             </div>
             <div class="modal-header-right-container">
               <i class="fa fa-times fa-modal-x" aria-hidden="true"></i>
@@ -178,7 +177,7 @@ const cardModal = {
           <form action="" class="modal-form-container">
             <div class="modal-input-container">
               <div class="input-title-container">
-                <h3 class="input-title">${dealerTitle}</h3>
+                <h3 class="input-title">first and last name</h3>
                 <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
               </div>
               <input type="text" placeholder="" name="name" class="modal-input">
@@ -228,8 +227,15 @@ const cardModal = {
           </p>
         </div>
       </div>
-    </div>
     `;
+    //modal animation
+    const modalContainer = document.createElement("div");
+    modalContainer.classList.add("full-modal-container");
+    document.body.append(modalContainer);
+    modalContainer.innerHTML = modal;
+    modalContainer.classList.toggle("visible");
+    setTimeout(() => modalContainer.classList.toggle("show"), 100);
+    setTimeout(() => modalContainer.childNodes[1].classList.toggle("card-reveal"), 500)
   }
 }
 
