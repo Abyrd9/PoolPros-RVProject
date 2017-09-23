@@ -33,6 +33,9 @@ button {
 
 .header-bar-full {
   background-color: #083D8C; }
+  @media screen and (max-width: 650px) {
+    .header-bar-full {
+      display: none; } }
   .header-bar-full .header-bar {
     display: flex;
     align-items: center;
@@ -353,7 +356,8 @@ button {
   align-items: center;
   background-color: rgba(63, 63, 63, 0);
   transition: all ease 1s;
-  z-index: 2; }
+  z-index: 2;
+  transition: all ease 0.3s; }
   .full-modal-container .modal-card {
     max-width: 700px;
     width: 80%;
@@ -364,6 +368,7 @@ button {
     transform: translateY(20%);
     transition: all ease 0.3s; }
   .full-modal-container .card-reveal {
+    transition: all ease 0.3s;
     opacity: 1;
     transform: translateY(0); }
 
@@ -371,7 +376,7 @@ button {
   visibility: visible; }
 
 .show {
-  transition: all ease 1s;
+  transition: all ease 0.3s;
   background-color: rgba(63, 63, 63, 0.5); }
 
 .modal-header-container {

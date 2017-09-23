@@ -234,8 +234,29 @@ const cardModal = {
     document.body.append(modalContainer);
     modalContainer.innerHTML = modal;
     modalContainer.classList.toggle("visible");
-    setTimeout(() => modalContainer.classList.toggle("show"), 100);
-    setTimeout(() => modalContainer.childNodes[1].classList.toggle("card-reveal"), 500)
+    const modalCard = modalContainer.childNodes[1];
+    //fire off function for animating modal
+    cardModal.modalAnimation(modalContainer, modalCard);
+    //fire off function for exiting modal
+    cardModal.deleteModal(modalContainer, modalCard);
+  },
+  deleteModal: function(modalContainer, modalCard) {
+    const exitButton = document.querySelector(".fa-modal-x");
+    exitButton.addEventListener('click', () => {
+      cardModal.modalAnimation(modalContainer, modalCard)
+      setTimeout(() => document.body.removeChild(modalContainer), 500)
+
+    })
+  },
+  modalAnimation: function(modalContainer, modalCard) {
+    if (modalContainer.classList.contains("show")) {
+      setTimeout(() => modalCard.classList.toggle("card-reveal"), 100)
+      setTimeout(() => modalContainer.classList.toggle("show"), 200)
+    } else {
+      setTimeout(() => modalContainer.classList.toggle("show"), 100)
+      setTimeout(() => modalCard.classList.toggle("card-reveal"), 200)
+    }
+
   }
 }
 
