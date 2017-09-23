@@ -175,6 +175,8 @@ button {
           .filter-bar-full .filter-bar .filter-list-container .filter-input-container .checkbox-input-container label:hover {
             transition: background-color ease 0.2s;
             background-color: rgba(33, 109, 223, 0.05); }
+        .filter-bar-full .filter-bar .filter-list-container .filter-input-container .checkbox-input-container .checked {
+          background-color: #083D8C; }
         .filter-bar-full .filter-bar .filter-list-container .filter-input-container .checkbox-input-container input[type=checkbox] {
           position: absolute;
           visibility: hidden; }
