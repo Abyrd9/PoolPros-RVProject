@@ -91,8 +91,9 @@ var filter = {
                        '      <h4 class="card-content-bottom-title">Business House</h4>' +
                        '      <p class="card-content-bottom-text">Weekdays ' + cardData.data.weekHours.mon + '<br>Saturdays ' + dataSifting.saturdayCalc(cardData) + '<br>Sundays ' + dataSifting.sundayCalc(cardData) + '</p>' +
                        '    </div>' +
-                       '  </div>' +
-                       '  <div class="card-footer-container">' + dataSifting.footerContentFilter(cardData) + '</div></div>';
+                       '  <div class="card-footer-container">' +
+                       '    <div class="card-footer-content-container">' + dataSifting.footerContentFilter(cardData) + '</div>' +
+                       '  </div>'
     //insert HTML card template into the card
     card.innerHTML = cardElement;
     console.log(card);
@@ -171,3 +172,7 @@ var handlers = {
 
 
 handlers.filterInputEventListener();
+
+// switch to const and let
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+// http://getbem.com/
