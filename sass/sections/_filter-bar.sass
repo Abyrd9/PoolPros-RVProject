@@ -1,0 +1,76 @@
+.filter-bar-full
+  .filter-bar
+    background-color: $soft-white
+    border-radius: 5px
+    display: flex
+    align-items: center
+    .filter-bar-text
+      margin: 20px
+      font-size: 18px
+    .filter-left-text
+      @include bold-font
+      color: $light-blue
+    .filter-split-bar
+      height: 80%
+      width: 3px
+      background-color: $light-gray
+    .filter-right-text
+      @include bold-font
+      color: $charcoal
+    .filter-list-container
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      .filter-input-container
+        display: flex
+        flex-direction: row
+        align-items: center
+        margin: 15px
+        .checkbox-input-container
+          position: relative
+          display: flex
+          justify-content: center
+          align-items: center
+          margin: 10px
+          label
+            display: block
+            width: 40px
+            height: 40px
+            border-radius: 10px
+            position: relative
+            cursor: pointer
+            z-index: 1
+            background-color: white
+            border: 1px solid $dark-gray
+            display: flex
+            justify-content: center
+            align-items: center
+            &::after
+              display: block
+              content: ""
+              position: absolute
+              width: 15px
+              height: 15px
+              background-color: white
+            &:hover
+              transition: background-color ease .2s
+              background-color: rgba(33, 109, 223, .05)
+          .checked
+            background-color: $dark-blue
+          input[type=checkbox]
+            position: absolute
+            visibility: hidden
+        .input-text
+          @include regular-font
+          text-transform: capitalize
+          font-size: 16px
+    .question-button
+      @include bold-font
+      color: $light-blue
+      background-color: $dark-gray
+      width: 30px
+      height: 30px
+      border-radius: 3px
+      &:hover
+        cursor: pointer

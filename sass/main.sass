@@ -1,0 +1,33 @@
+//Responsive
+=desktop()
+  @media screen and (min-width: 951px)
+    @content
+
+=ultra()
+  @media screen and (min-width: 1921px)
+    @content
+
+=mobile()
+  @media screen and (max-width: 950px)
+    @content
+
+=laptop()
+  @media screen and (min-width: 951px) and (max-width: 1412px)
+    @content
+
+=tablet()
+  @media screen and (max-width: 951px) and (min-width: 550px)
+    @content
+
+//General Stylings
+@import 'common/containers'
+@import 'common/commonStyling'
+@import 'common/colors'
+@import 'common/font'
+
+//Sections
+@import 'sections/header-bar'
+@import 'sections/nav-bar'
+@import 'sections/header-image'
+@import 'sections/filter-bar'
+@import 'sections/card-content'

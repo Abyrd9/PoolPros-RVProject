@@ -176,3 +176,4 @@ handlers.filterInputEventListener();
 // switch to const and let
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 // http://getbem.com/
+// Do Module 1 and 3 Wes Bos course before turning in project.
