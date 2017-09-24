@@ -202,28 +202,28 @@ const cardModal = {
                 <h3 class="input-title">first and last name</h3>
                 <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
               </div>
-              <input type="text" placeholder="" name="name" class="modal-input">
+              <input oninput="cardModal.modalInputChange(this, this.value)" type="text" placeholder="" name="name" class="modal-input">
             </div>
             <div class="modal-input-container phone-number">
               <div class="input-title-container">
                 <h3 class="input-title">phone number</h3>
                 <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
               </div>
-              <input type="tel" placeholder="" name="phone-number" class="modal-input">
+              <input oninput="cardModal.modalInputChange(this, this.value)" type="tel" placeholder="" name="phone-number" class="modal-input">
             </div>
             <div class="modal-input-container">
               <div class="input-title-container">
                 <h3 class="input-title">email address</h3>
                 <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
               </div>
-              <input type="text" placeholder="" name="email" class="modal-input">
+              <input oninput="cardModal.modalInputChange(this, this.value)" type="text" placeholder="" name="email" class="modal-input">
             </div>
             <div class="modal-input-container">
               <div class="input-title-container">
                 <h3 class="input-title">comments or questions</h3>
                 <p class="input-optional">optional</p>
               </div>
-              <textarea rows="5" type="text" placeholder="" name="comments-questions" class="modal-input modal-textarea"></textarea>
+              <textarea oninput="cardModal.modalInputChange(this, this.value)" rows="5" type="text" placeholder="" name="comments-questions" class="modal-input modal-textarea"></textarea>
             </div>
             <div class="modal-input-container">
               <div class="input-title-container">
@@ -264,10 +264,14 @@ const cardModal = {
   },
   deleteModal: (modalContainer, modalCard) => {
     const exitButton = document.querySelector(".fa-modal-x");
+    const sendButton = document.querySelector(".form-footer-button");
     exitButton.addEventListener('click', () => {
       cardModal.modalAnimation(modalContainer, modalCard)
       setTimeout(() => document.body.removeChild(modalContainer), 500)
-
+    })
+    sendButton.addEventListener('click', () => {
+      cardModal.modalAnimation(modalContainer, modalCard)
+      setTimeout(() => document.body.removeChild(modalContainer), 500)
     })
   },
   modalAnimation: (modalContainer, modalCard) => {
@@ -278,7 +282,14 @@ const cardModal = {
       setTimeout(() => modalContainer.classList.toggle("show"), 100)
       setTimeout(() => modalCard.classList.toggle("card-reveal"), 200)
     }
-
+  },
+  modalInputChange: function(input, inputValue) {
+    const check = input.parentNode.childNodes[1].childNodes[3];
+    if (inputValue !== "") {
+      check.classList.contains('modal-checked') ? null : check.classList.toggle('modal-checked');
+    } else {
+      check.classList.toggle('modal-checked')
+    }
   }
 }
 

@@ -708,6 +708,10 @@ button {
   transition: all ease 1s;
   z-index: 2;
   transition: all ease 0.3s; }
+  @media screen and (max-width: 750px) {
+    .full-modal-container {
+      padding: 30px 0;
+      overflow: scroll; } }
   .full-modal-container .modal-card {
     max-width: 700px;
     width: 80%;
@@ -717,6 +721,10 @@ button {
     opacity: 0;
     transform: translateY(20%);
     transition: all ease 0.3s; }
+    @media screen and (max-width: 750px) {
+      .full-modal-container .modal-card {
+        max-width: 100%;
+        width: 95%; } }
   .full-modal-container .card-reveal {
     transition: all ease 0.3s;
     opacity: 1;
@@ -754,6 +762,9 @@ button {
         text-transform: uppercase;
         color: white;
         font-size: 16px; }
+        @media screen and (max-width: 750px) {
+          .modal-header-container .modal-header-content-container .modal-header-left-container .modal-title-one {
+            font-size: 3vw; } }
       .modal-header-container .modal-header-content-container .modal-header-left-container .modal-title-two {
         margin: 0;
         padding: 0;
@@ -762,6 +773,9 @@ button {
         color: #3F3F3F;
         color: white;
         font-size: 32px; }
+        @media screen and (max-width: 750px) {
+          .modal-header-container .modal-header-content-container .modal-header-left-container .modal-title-two {
+            font-size: 6vw; } }
     .modal-header-container .modal-header-content-container .modal-header-right-container .fa-modal-x {
       color: white;
       font-size: 22px; }
@@ -770,17 +784,27 @@ button {
 
 .modal-content-container {
   padding: 0px 35px; }
+  @media screen and (max-width: 750px) {
+    .modal-content-container {
+      padding: 0px 5px; } }
   .modal-content-container .modal-content-text {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
     color: #3F3F3F;
     color: #616161;
     font-size: 15px; }
+    @media screen and (max-width: 750px) {
+      .modal-content-container .modal-content-text {
+        font-size: 2.5vw;
+        padding: 0px 20px; } }
   .modal-content-container .modal-form-container {
     background-color: #F6F6F6;
     padding: 0px 20px;
     display: flex;
     flex-direction: column; }
+    @media screen and (max-width: 750px) {
+      .modal-content-container .modal-form-container {
+        background-color: white; } }
     .modal-content-container .modal-form-container .modal-input-container {
       display: flex;
       flex-direction: column;
@@ -802,16 +826,19 @@ button {
           color: #616161;
           text-transform: capitalize;
           font-size: 14px; }
+          @media screen and (max-width: 750px) {
+            .modal-content-container .modal-form-container .modal-input-container .input-title-container .input-title {
+              font-size: 2.5vw; } }
         .modal-content-container .modal-form-container .modal-input-container .input-title-container .fa-modal-check {
           margin: 0;
           padding: 3px;
           border: 2px solid #BEBEBE;
           border-radius: 100%;
           color: rgba(103, 220, 183, 0); }
-          .modal-content-container .modal-form-container .modal-input-container .input-title-container .fa-modal-check:hover {
-            color: #67dcb7;
-            border: 2px solid #02C7C6;
-            cursor: pointer; }
+        .modal-content-container .modal-form-container .modal-input-container .input-title-container .modal-checked {
+          color: #67dcb7;
+          border: 2px solid #02C7C6;
+          cursor: pointer; }
         .modal-content-container .modal-form-container .modal-input-container .input-title-container .input-optional {
           margin: 0;
           padding: 0;
@@ -828,6 +855,10 @@ button {
         .modal-content-container .modal-form-container .modal-input-container .modal-input:focus {
           border: 2px solid #02C7C6;
           outline: #02C7C6; }
+        @media screen and (max-width: 750px) {
+          .modal-content-container .modal-form-container .modal-input-container .modal-input {
+            font-size: 3vw;
+            padding: 2vw; } }
       .modal-content-container .modal-form-container .modal-input-container .modal-textarea {
         margin: 0;
         padding: 10px; }
@@ -859,6 +890,9 @@ button {
             cursor: pointer; }
     .modal-content-container .modal-form-container .phone-number {
       width: 40%; }
+      @media screen and (max-width: 750px) {
+        .modal-content-container .modal-form-container .phone-number {
+          width: 80%; } }
     .modal-content-container .modal-form-container .form-footer-container {
       width: 100%;
       display: flex;
@@ -871,6 +905,8 @@ button {
         align-items: center;
         justify-content: center;
         margin: 30px 40px; }
+        .modal-content-container .modal-form-container .form-footer-container .form-footer-button:hover {
+          cursor: pointer; }
         .modal-content-container .modal-form-container .form-footer-container .form-footer-button .form-button-text {
           font-family: "Open Sans", sans-serif;
           font-weight: 700;
@@ -885,6 +921,9 @@ button {
 .modal-footer-container {
   width: 100%;
   background-color: #F6F6F6; }
+  @media screen and (max-width: 750px) {
+    .modal-footer-container {
+      display: none; } }
   .modal-footer-container .modal-footer-text {
     margin: 0;
     margin-top: 15px;
