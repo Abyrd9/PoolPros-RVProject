@@ -35,11 +35,15 @@ var filter = {
       }
     })
     // fire off filterCards
-    filter.filterCards(cert, dealers)
+    filter.filterCards(cert, dealers, data)
   },
 
   // render cards based on filter values
-  filterCards: function(cert, dealers) {
+  filterCards: function(cert, dealers, data) {
+    // Create
+    const filteredDealers = {
+      number: 0
+    }
     // Empty the cardContainer of any current cards
     var cardContainer = document.querySelector(".card-container");
     cardContainer.innerHTML = ""
@@ -56,12 +60,19 @@ var filter = {
       // if the dealer certificates have a value from cert array, fire off createCardElement
       if (isMatching(cardData.data.certifications, cert) === true) {
         var card = document.createElement('div');
+        filteredDealers.number = filteredDealers.number + 1;
         filter.createCardElement(card, cardData)
       } else {
         console.log("filtered out")
       }
     })
+    filter.filterInfo(filteredDealers.number, data);
     cardModal.modalEventListener();
+  },
+
+  filterInfo: function(number, data) {
+    const filterTextInfo = document.querySelector(".filter-left-text");
+    filterTextInfo.innerHTML = `${number} dealers in ${data.zipcode}`;
   },
 
   // Render card element with correct data from Json
@@ -79,6 +90,7 @@ var filter = {
       <div class="card-content-top">
         <div class="number-container">
           <i class="fa fa-phone" aria-hidden="true"></i>
+          <p class="number-text">Tap to call</p>
           <p class="phone-number">${cardData.data.phone1}</p>
         </div>
         <p class="number-sub-text">Can’t talk now? Click below to send an email.</p>
@@ -90,9 +102,10 @@ var filter = {
         </button>
       </div>
       <div class="card-content-bottom">
-        <h4 class="card-content-bottom-title">Business House</h4>
+        <h4 class="card-content-bottom-title">Business Hours</h4>
         <p class="card-content-bottom-text">Weekdays ${cardData.data.weekHours.mon}<br>Saturdays ${dataSifting.saturdayCalc(cardData)}<br>Sundays ${dataSifting.sundayCalc(cardData)}</p>
       </div>
+    </div>
     <div class="card-footer-container">
       <div class="card-footer-content-container">${cardData.data.certifications.map(cert => dataSifting.footerContentFilter(cert)).join('')}</div>
     </div>

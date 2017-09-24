@@ -1,30 +1,57 @@
 .nav-bar-full
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
   margin-bottom: 20px
+  +mobile()
+    height: 13vw
+    min-height: 65px
+    position: relative
   .nav-bar
     display: flex
+    justify-content: space-between
+    overflow: visible
+    +mobile()
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      margin-top: 20px
     .nav-left-content
-      flex: 1
       display: flex
       align-items: center
       justify-content: flex-start
+      +mobile()
+        align-items: flex-start
       .logo
+        +mobile()
+          width: 40vw
+          margin: 8px
     .nav-right-content
-      flex: 1.5
+      position: relative
       display: flex
       flex-direction: row
       justify-content: flex-end
       align-items: center
+      +mobile()
+        margin-right: 10px
+        align-items: flex-start
       .navigation-container
         display: flex
         flex-direction: row
+        +mobile()
+          display: none
+        a
+          text-decoration: none
+          color: none
         .navigation-list
           padding: 30px
-          a
-            text-decoration: none
-            color: $dark-blue
-            @include bold-font
-            font-size: 16px
+          color: $dark-blue
+          @include bold-font
+          font-size: 16px
+          &:hover
+            transition: all ease .3s
+            cursor: pointer
+            background-color: $light-blue
+            color: white
       .nav-button
         display: flex
         flex-direction: row
@@ -34,15 +61,76 @@
         border-radius: 3px
         padding: 12px 20px
         margin-left: 30px
+        &:hover
+          cursor: pointer
+        +mobile()
+          padding: 6px 8px
+          margin: 0px 10px
+          border: 3px solid $light-blue
+          margin-right: 20px
         .fa-map-marker
           margin: 0
           padding: 0
           margin-right: 10px
           color: $light-blue
           font-size: 22px
+          +mobile()
+            margin-right: 5px
+            font-size: 4.5vw
         .nav-button-text
           margin: 0
           padding: 0
           @include bold-font
           color: $light-blue
           font-size: 16px
+          +mobile()
+            display: none
+        .nav-button-text-mobile
+          margin: 0
+          padding: 0
+          display: none
+          +mobile()
+            display: block
+            @include extra-bold-font
+            color: $light-blue
+            text-transform: uppercase
+            font-size: 2.5vw
+.menu-toggle-button
+  display: none
+  +mobile()
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    width: 11vw
+    height: 11vw
+    border-radius: 100%
+    box-shadow: 0 1px 6px rgba(0,0,0,0.34), 0 4px 6px rgba(0,0,0,0.43)
+    background-color: white
+    &:hover
+      cursor: pointer
+  .toggle-button-bars
+    +mobile()
+      margin-right: 20%
+      background-color: $dark-blue
+      height: 1vw
+      width: 4.5vw
+      position: relative
+      border-radius: 2px
+      &:after
+        position: absolute
+        top: -1.5vw
+        left: -1vw
+        content: ""
+        background-color: $dark-blue
+        height: 1vw
+        width: 5.5vw
+        border-radius: 2px
+      &::before
+        position: absolute
+        top: 1.5vw
+        left: -1vw
+        content: ""
+        background-color: $dark-blue
+        height: 1vw
+        width: 5.5vw
+        border-radius: 2px

@@ -1,22 +1,10 @@
 //Responsive
-=desktop()
-  @media screen and (min-width: 951px)
-    @content
-
-=ultra()
-  @media screen and (min-width: 1921px)
+=screenBreak()
+  @media screen and (max-width: 1240px)
     @content
 
 =mobile()
   @media screen and (max-width: 650px)
-    @content
-
-=laptop()
-  @media screen and (min-width: 951px) and (max-width: 1412px)
-    @content
-
-=tablet()
-  @media screen and (max-width: 951px) and (min-width: 550px)
     @content
 
 //General Stylings
@@ -32,3 +20,5 @@
 @import 'partials/filter-bar'
 @import 'partials/card-content'
 @import 'partials/modal'
+@import 'partials/socialBar'
+@import 'partials/footer'

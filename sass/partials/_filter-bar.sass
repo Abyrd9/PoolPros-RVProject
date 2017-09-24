@@ -4,29 +4,82 @@
     border-radius: 5px
     display: flex
     align-items: center
-    .filter-bar-text
-      margin: 20px
-      font-size: 18px
-    .filter-left-text
-      @include bold-font
-      color: $light-blue
-    .filter-split-bar
-      height: 80%
-      width: 3px
-      background-color: $light-gray
-    .filter-right-text
-      @include bold-font
-      color: $charcoal
+    +mobile()
+      width: 100%
+      border-radius: 0px
+      flex-direction: column
+      padding-bottom: 30px
+    .filter-bar-text-container
+      height: 100%
+      display: flex
+      flex-direction: row
+      align-items: center
+      +mobile()
+        height: auto
+        width: 90%
+        justify-content: space-between
+        padding-top: 20px
+      .filter-bar-text
+        margin: 20px
+        font-size: 18px
+        +mobile()
+          display: flex
+          flex-direction: row
+          margin: 0 10px
+          font-size: 4vw
+      .filter-left-text
+        @include bold-font
+        color: $light-blue
+      .filter-split-bar
+        height: 80%
+        width: 3px
+        background-color: $light-gray
+        +mobile()
+          display: none
+      .filter-right-text-container
+        margin: 0
+        padding: 0
+        +mobile()
+          display: flex
+          flex-direction: row
+        .filter-right-text
+          @include bold-font
+          color: $charcoal
+          +mobile()
+            background-color: white
+            border: 1px solid $dark-gray
+            border-bottom: 0px
+            padding: 10px
+            margin-right: 0
+        .filter-bar-right-button
+          display: none
+          +mobile()
+            display: flex
+            padding: 14px 16px
+            border: 1px solid $dark-gray
+            border-left: 0px
+            border-bottom: 0px
+          .fa-filter-arrow
+            font-size: 4vw
     .filter-list-container
       display: flex
       flex-direction: row
       align-items: center
       justify-content: space-between
+      +mobile()
+        flex-direction: column
+        background-color: white
+        justify-content: flex-start
+        align-items: flex-start
+        width: 90%
+        border: 1px solid $dark-gray
       .filter-input-container
         display: flex
         flex-direction: row
         align-items: center
         margin: 15px
+        +mobile()
+          margin: 5px 15px
         .checkbox-input-container
           position: relative
           display: flex
@@ -53,9 +106,15 @@
               width: 15px
               height: 15px
               background-color: white
+              +mobile()
+                width: 3vw
+                height: 3vw
             &:hover
               transition: background-color ease .2s
               background-color: rgba(33, 109, 223, .05)
+            +mobile()
+              width: 8vw
+              height: 8vw
           .checked
             background-color: $dark-blue
           input[type=checkbox]
@@ -65,12 +124,19 @@
           @include regular-font
           text-transform: capitalize
           font-size: 16px
-    .question-button
-      @include bold-font
-      color: $light-blue
-      background-color: $dark-gray
-      width: 30px
-      height: 30px
-      border-radius: 3px
-      &:hover
-        cursor: pointer
+          +mobile()
+            font-size: 4vw
+        .question-button
+          @include bold-font
+          color: $light-blue
+          background-color: $dark-gray
+          width: 30px
+          height: 30px
+          border-radius: 3px
+          margin-left: 15px
+          &:hover
+            cursor: pointer
+          +mobile()
+            width: 8vw
+            height: 8vw
+            font-size: 3.5vw

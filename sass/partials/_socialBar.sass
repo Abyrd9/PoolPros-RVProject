@@ -1,0 +1,33 @@
+.social-bar-full
+  background-color: $dark-blue
+  .social-container
+    .social-content-container
+      margin: 20px
+      margin-bottom: 0px
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      .logo-footer
+        height: 25px
+        width: 190px
+      .social-content
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+        .social-text
+          @include bold-font
+          text-transform: uppercase
+          color: white
+          font-size: 14px
+          margin: 10px 10px
+        .social-icons-container
+          margin: 10px 10px
+          .social-icon
+            margin: 10px
+            &:hover
+              cursor: pointer
+          .twitter
+          .facebook
+          .youtube
