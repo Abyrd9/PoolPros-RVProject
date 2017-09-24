@@ -1,4 +1,5 @@
 .filter-bar-full
+  margin-top: 9vw
   .filter-bar
     background-color: $soft-white
     border-radius: 5px
@@ -16,17 +17,20 @@
       align-items: center
       +mobile()
         height: auto
-        width: 90%
+        width: 80%
         justify-content: space-between
         padding-top: 20px
       .filter-bar-text
         margin: 20px
         font-size: 18px
+        +medium()
+          font-size: 1.5vw
+          margin: 2vw
         +mobile()
           display: flex
           flex-direction: row
           margin: 0 10px
-          font-size: 4vw
+          font-size: 3vw
       .filter-left-text
         @include bold-font
         color: $light-blue
@@ -60,7 +64,7 @@
             border-left: 0px
             border-bottom: 0px
           .fa-filter-arrow
-            font-size: 4vw
+            font-size: 3vw
     .filter-list-container
       display: flex
       flex-direction: row
@@ -71,13 +75,15 @@
         background-color: white
         justify-content: flex-start
         align-items: flex-start
-        width: 90%
+        width: 80%
         border: 1px solid $dark-gray
       .filter-input-container
         display: flex
         flex-direction: row
         align-items: center
         margin: 15px
+        +medium()
+          margin: 1vw
         +mobile()
           margin: 5px 15px
         .checkbox-input-container
@@ -88,9 +94,9 @@
           margin: 10px
           label
             display: block
-            width: 40px
-            height: 40px
-            border-radius: 10px
+            width: 22px
+            height: 22px
+            border-radius: 5px
             position: relative
             cursor: pointer
             z-index: 1
@@ -103,40 +109,41 @@
               display: block
               content: ""
               position: absolute
-              width: 15px
-              height: 15px
+              width: 8px
+              height: 8px
               background-color: white
               +mobile()
-                width: 3vw
-                height: 3vw
+                width: 2vw
+                height: 2vw
             &:hover
               transition: background-color ease .2s
               background-color: rgba(33, 109, 223, .05)
             +mobile()
-              width: 8vw
-              height: 8vw
+              width: 5vw
+              height: 5vw
           .checked
-            background-color: $dark-blue
+            background-color: $light-blue
           input[type=checkbox]
             position: absolute
             visibility: hidden
         .input-text
           @include regular-font
           text-transform: capitalize
-          font-size: 16px
+          font-size: 12px
           +mobile()
-            font-size: 4vw
+            font-size: 3vw
         .question-button
           @include bold-font
+          font-size: 10px
           color: $light-blue
           background-color: $dark-gray
-          width: 30px
-          height: 30px
+          width: 20px
+          height: 20px
           border-radius: 3px
           margin-left: 15px
           &:hover
             cursor: pointer
           +mobile()
-            width: 8vw
-            height: 8vw
-            font-size: 3.5vw
+            width: 5vw
+            height: 5vw
+            font-size: 2.5vw

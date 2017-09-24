@@ -1,5 +1,6 @@
 .header-bar-full
   background-color: $dark-blue
+  height: 42px
   +mobile()
     display: none
   .header-bar
@@ -13,7 +14,9 @@
       align-items: center
       padding: 10px 20px
       .header-bar-link
-        font-size: 14px
+        font-size: 12px
+        +medium()
+          font-size: 10px
         a
           @include regular-font
           color: white
@@ -21,7 +24,9 @@
     .fa-share-square-o
       color: white
       padding-left: 5px
-      font-size: 14px
+      font-size: 12px
+      +medium()
+        font-size: 10px
 
 #header-bar-link-container-right
   padding-right: 0

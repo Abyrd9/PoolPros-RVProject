@@ -1,9 +1,49 @@
-.footer-full
+.bottom-bar-full
   background-color: $light-blue
-  .footer-container
+  margin-top: auto
+  display: flex
+  justify-content: center
+  .bottom-bar-container
+    width: 100%
     display: flex
+    flex-direction: column
     justify-content: center
+    align-items: center
+    +mobile()
+      width: 20px
+    .bottom-bar-mobile
+      display: none
+      +mobile()
+        display: flex
+        width: 300px
+        flex-direction: row
+        justify-content: center
+        align-self: center
+        border-bottom: 1px white solid
+      .footer-bar-link-container
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        .footer-bar-link
+          a
+            @include regular-font
+            color: white
+            text-decoration: none
+            margin: 0px 5px
+            padding: 0
+            font-size: 12px
+        .fa-share-square-o
+          color: white
+          font-size: 12px
+      .footer-divider
+        @include regular-font
+        color: white
+        padding: 0
+        margin: 0
+        align-self: center
     .footer-text
+      text-align: center
       @include regular-font
       color: white
       font-size: 12px

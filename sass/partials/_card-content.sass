@@ -1,4 +1,5 @@
 .card-container-full
+  margin: 25px 0px
   .card-container
     display: flex
     flex-flow: wrap
@@ -8,7 +9,7 @@
       flex: 1 1 100%
       display: flex
       flex-direction: column
-      justify-content: center
+      justify-content: space-between
       align-items: center
       box-shadow: 0 0px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
       border-radius: 10px
@@ -17,27 +18,30 @@
         margin: 0px 25px
         max-width: 90%
       .card-title-container
+        height: 40px
         width: 90%
         display: flex
         align-items: center
         justify-content: center
         padding: 20px 0px
-        border-bottom: 1.5px solid $light-gray
+        border-bottom: 2px solid $light-gray
         margin-bottom: 10px
         +mobile()
           border-bottom: none
           margin-bottom: 0px
           padding: 30px 0px
+          height: 10vw
         .card-title
           margin: 0
           padding: 0
           @include light-font
           color: $charcoal
           text-align: center
+          font-size: 26px
           +mobile()
             font-size: 5vw
       .card-content-container
-        width: 80%
+        width: 100%
         display: flex
         flex-direction: column
         align-items: center
@@ -52,16 +56,16 @@
             flex-direction: row
             justify-content: space-between
             align-items: center
-            width: 68%
             +mobile()
               background-color: $light-blue
               padding: 10px
               max-width: 90%
               width: auto
             .fa-phone
+              margin-right: 10px
               color: white
               background-color: $light-blue
-              padding: 6px 8px
+              padding: 8px 10px
               border-radius: 100%
               align-self: center
               +mobile()
@@ -78,7 +82,7 @@
                 font-size: 3vw
             .phone-number
               @include extra-bold-font
-              font-size: 24px
+              font-size: 26px
               align-self: center
               margin: 0
               padding: 0
@@ -88,7 +92,7 @@
                 font-size: 4vw
           .number-sub-text
             @include regular-font
-            font-size: 11px
+            font-size: 12px
             font-style: italic
             margin: 10px 0px
             +mobile()
@@ -104,7 +108,7 @@
             display: flex
             flex-direction: row
             align-items: center
-            padding: 10px 25px
+            padding: 10px 20px
             border: 2px solid $green
             border-radius: 3px
             &:hover
@@ -112,6 +116,7 @@
             +mobile()
               border: .5vw solid $green
               border-radius: 5px
+              padding: 2.5vw 3.5vw
             .fa-envelope
               color: $dark-blue
               margin-right: 10px
@@ -120,8 +125,9 @@
             .card-button-text
               margin: 0
               padding: 0
-              color: $dark-blue
               @include bold-font
+              color: $dark-blue
+              font-size: 15px
               +mobile()
                 font-size: 4vw
                 color: $dark-blue
@@ -135,7 +141,7 @@
             padding: 0
             margin: 0
             @include bold-font
-            font-size: 12px
+            font-size: 14px
             +mobile()
               font-size: 3vw
           .card-content-bottom-text
@@ -143,11 +149,11 @@
             padding: 0
             text-align: center
             @include regular-font
-            font-size: 12px
+            font-size: 14px
             line-height: 18px
             +mobile()
               font-size: 3vw
-              line-height: 4vw
+              line-height: 5vw
       .card-footer-container
         width: 100%
         border-radius: 0px 0px 10px 10px
@@ -155,29 +161,50 @@
         display: flex
         justify-content: center
         padding: 20px 0px
+        height: 60px
+        +mobile()
+          height: auto
+          padding: 3vw 0px
         .card-footer-content-container
           width: 80%
           display: flex
           flex-wrap: wrap
           justify-content: space-between
-          .footer-text-container
+          flex-direction: row
+          +mobile
+            margin: 3vw 0px
+          .card-footer-content-left
             width: 40%
             display: flex
-            flex-direction: row
-            align-items: center
+            flex-direction: column
             justify-content: flex-start
-            margin: 5px
-            .fa-card-icon
-              color: $dark-gray
-              font-size: 12px
-              margin-right: 10px
-              +mobile()
-                font-size: 3vw
-            .footer-text
-              padding: 0
-              margin: 0
-              @include regular-font
-              font-size: 12px
-              color: $charcoal
-              +mobile()
-                font-size: 3vw
+          .card-footer-content-right
+            width: 40%
+            display: flex
+            flex-direction: column
+            justify-content: flex-start
+
+
+
+.footer-text-container
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: flex-start
+  margin: 5px
+  +mobile
+    margin: 2vw 0px
+  .fa-card-icon
+    color: $modal-gray
+    font-size: 12px
+    margin-right: 10px
+    +mobile()
+      font-size: 3vw
+  .footer-text
+    padding: 0
+    margin: 0
+    @include regular-font
+    font-size: 12px
+    color: $charcoal
+    +mobile()
+      font-size: 3vw

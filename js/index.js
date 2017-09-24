@@ -9,7 +9,7 @@ var filter = {
   ],
 
   // fetch json data
-  fetchData: function(filterStatus) {
+  fetchData: (filterStatus) => {
     fetch('https://api.myjson.com/bins/lgb21')
       .then(res => {
         res.json().then(function(data) {
@@ -20,7 +20,7 @@ var filter = {
   },
 
   // fire from handlers - update the filterStatus array
-  updateStatus: function(filterStatus, data) {
+  updateStatus: (filterStatus, data) => {
     // set new certificantions array
     cert = [];
     // get dealers array from Json data
@@ -39,7 +39,7 @@ var filter = {
   },
 
   // render cards based on filter values
-  filterCards: function(cert, dealers, data) {
+  filterCards: (cert, dealers, data) => {
     // Create
     const filteredDealers = {
       number: 0
@@ -76,7 +76,7 @@ var filter = {
   },
 
   // Render card element with correct data from Json
-  createCardElement: function(card, cardData) {
+  createCardElement: (card, cardData) => {
     //append card to the cardContainer
     card.classList.add("card");
     var cardContainer = document.querySelector(".card-container");
@@ -107,7 +107,10 @@ var filter = {
       </div>
     </div>
     <div class="card-footer-container">
-      <div class="card-footer-content-container">${cardData.data.certifications.map(cert => dataSifting.footerContentFilter(cert)).join('')}</div>
+      <div class="card-footer-content-container">
+        <div class="card-footer-content-left">${cardData.data.certifications.map(cert => dataSifting.footerContentFilterLeft(cert)).join('')}</div>
+        <div class="card-footer-content-right">${cardData.data.certifications.map(cert => dataSifting.footerContentFilterRight(cert)).join('')}</div>
+      </div>
     </div>
     `;
     //insert HTML card template into the card
@@ -117,7 +120,7 @@ var filter = {
 }
 
 var dataSifting = {
-  sundayCalc: function(cardData) {
+  sundayCalc: (cardData) => {
     var weekHoursObj = cardData.data.weekHours;
     if (weekHoursObj.sun === "") {
       return "- CLOSED";
@@ -127,7 +130,7 @@ var dataSifting = {
       return weekHoursObj.sun
     }
   },
-  saturdayCalc: function(cardData) {
+  saturdayCalc: (cardData) => {
     var weekHoursObj = cardData.data.weekHours;
     if (weekHoursObj.sat === "") {
       return "- CLOSED"
@@ -135,28 +138,34 @@ var dataSifting = {
       return weekHoursObj.sat
     }
   },
-  footerContentFilter: function(cert) {
+  footerContentFilterLeft: (cert) => {
     console.log(cert)
     const starIcon = `<i class="fa fa-star fa-card-icon" aria-hidden="true"></i>`
-    const cogIcon = `<i class="fa fa-cog fa-card-icon" aria-hidden="true"></i>`
     const houseIcon = `<i class="fa fa-home fa-card-icon" aria-hidden="true"></i>`
-    const userIcon = `<i class="fa fa-user fa-card-icon" aria-hidden="true"></i>`
     if (cert === "Installation Pro") {
       var currentIcon = starIcon;
-    } else if (cert === "Service Pro") {
-      var currentIcon = cogIcon;
+      return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
     } else if (cert === "Residential Pro") {
       var currentIcon = houseIcon;
+      return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
+    }
+  },
+  footerContentFilterRight: (cert) => {
+    console.log(cert)
+    const cogIcon = `<i class="fa fa-cog fa-card-icon" aria-hidden="true"></i>`
+    const userIcon = `<i class="fa fa-user fa-card-icon" aria-hidden="true"></i>`
+    if (cert === "Service Pro") {
+      var currentIcon = cogIcon;
+      return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
     } else if (cert === "Commercial Pro") {
       var currentIcon = userIcon;
+      return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
     }
-    return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
-  }
-
+  },
 }
 
 const cardModal = {
-  modalEventListener: function() {
+  modalEventListener: () => {
     const cardButtons = document.querySelectorAll(".card-button");
     for (let i = 0; i < cardButtons.length; i++) {
       cardButtons[i].addEventListener('click', e => {
@@ -170,7 +179,7 @@ const cardModal = {
       })
     }
   },
-  createModal: function(button) {
+  createModal: (button) => {
     const dealerTitle = button.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].innerHTML;
     const modal = `
       <div class="modal-card">
@@ -253,7 +262,7 @@ const cardModal = {
     //fire off function for exiting modal
     cardModal.deleteModal(modalContainer, modalCard);
   },
-  deleteModal: function(modalContainer, modalCard) {
+  deleteModal: (modalContainer, modalCard) => {
     const exitButton = document.querySelector(".fa-modal-x");
     exitButton.addEventListener('click', () => {
       cardModal.modalAnimation(modalContainer, modalCard)
@@ -261,7 +270,7 @@ const cardModal = {
 
     })
   },
-  modalAnimation: function(modalContainer, modalCard) {
+  modalAnimation: (modalContainer, modalCard) => {
     if (modalContainer.classList.contains("show")) {
       setTimeout(() => modalCard.classList.toggle("card-reveal"), 100)
       setTimeout(() => modalContainer.classList.toggle("show"), 200)
@@ -277,7 +286,7 @@ const cardModal = {
 var handlers = {
 
   //create Event Listener for inputs, fire-off state change when clicked
-  filterInputEventListener: function() {
+  filterInputEventListener: () => {
     //pull node list containing all checkbox input containers
     var checkboxContainers = document.querySelectorAll(".checkbox-input-container");
     for (let i = 0; i < checkboxContainers.length; i++) {
@@ -296,6 +305,12 @@ var handlers = {
 
 }
 
+var mobileMenu = {
+  mobileMenuEventListener: () => {
+
+  }
+}
+
 filter.fetchData(filter.filterStatus);
 handlers.filterInputEventListener();
 
@@ -304,3 +319,5 @@ handlers.filterInputEventListener();
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 // http://getbem.com/
 // Do Module 1 and 3 Wes Bos course before turning in project.
+
+//create DOM node elements

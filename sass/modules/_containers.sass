@@ -6,7 +6,7 @@ body
   display: flex
   flex-direction: column
   position: relative
-
+  min-height: 100vh
 .full-width
   flex: 0 0 100%
   display: flex
@@ -16,6 +16,15 @@ body
   flex: 0 0 90%
   display: flex
   justify-content: center
+  +medium()
+    flex: 0 0 95%
   +mobile()
     flex: 0 0 100%
     position: relative
+
+.body-content-container
+  display: flex
+  flex-direction: column
+  background-image: url('../../img/water-image.png')
+  background-repeat: no-repeat
+  background-size: contain
