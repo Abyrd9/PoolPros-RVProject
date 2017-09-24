@@ -1,4 +1,4 @@
-var filter = {
+const filter = {
 
   // initial filter status
   filterStatus: [
@@ -283,14 +283,14 @@ const cardModal = {
 }
 
 
-var handlers = {
+const handlers = {
 
   //create Event Listener for inputs, fire-off state change when clicked
   filterInputEventListener: () => {
     //pull node list containing all checkbox input containers
     var checkboxContainers = document.querySelectorAll(".checkbox-input-container");
     for (let i = 0; i < checkboxContainers.length; i++) {
-      checkboxContainers[i].childNodes[1].addEventListener('click', function(e) {
+      checkboxContainers[i].childNodes[1].addEventListener('click', (e) => {
         e.target.classList.toggle("checked")
         inputCheck = e.target.nextSibling.nextSibling.checked;
         filter.filterStatus.forEach(function(element, index, array) {
@@ -302,17 +302,95 @@ var handlers = {
       })
     }
   },
+  mobileNavEventListener: () => {
+    const mobileNavToggleButton = document.querySelector(".menu-toggle-button");
+    mobileNavToggleButton.addEventListener('click', (e) => {
+      mobileMenu.createMobileNav();
+    })
+  },
+  mobileNavExitEventListener: () => {
+    const mobileNavExitButton = document.querySelector('.fa-nav-x');
+    mobileNavExitButton.addEventListener('click', (e) => {
+      const mobileNavHolder = document.querySelector('.mobile-nav-holder');
+      mobileNavHolder.classList.toggle("nav-reveal");
+      const mobileNav = e.target.parentNode.parentNode.parentNode.parentNode;
+      console.log(mobileNav)
+      document.body.removeChild(mobileNav)
+    })
+  },
+  mobileFilterToggleEventListener: () => {
+    const filterResultsButton = document.querySelector(".filter-bar-right-button");
+    filterResultsButton.addEventListener('click', (e) => {
+      mobileFilter.mobileFilterToggle(e.target);
+    })
+  }
 
 }
 
-var mobileMenu = {
-  mobileMenuEventListener: () => {
+const mobileMenu = {
+  createMobileNav: () => {
+    const mobileNav = `
+      <div class="mobile-nav-container">
+        <div class="mobile-nav-header-container">
+          <div class="header-exit-button-container">
+            <i class="fa fa-times fa-nav-x" aria-hidden="true"></i>
+          </div>
+          <h2 class="mobile-nav-title">menu</h2>
+        </div>
+        <ul class="mobile-nav-content-container">
+          <a href="#"><li class="mobile-nav">
+            <p class="mobile-nav-text">pools & spas</p>
+            <i class="fa fa-chevron-right fa-chevron-nav" aria-hidden="true"></i>
+          </li></a>
+          <a href="#"><li class="mobile-nav">
+            <p class="mobile-nav-text">supplies</p>
+            <i class="fa fa-chevron-right fa-chevron-nav" aria-hidden="true"></i>
+          </li></a>
+          <a href="#"><li class="mobile-nav">
+            <p class="mobile-nav-text">resources</p>
+            <i class="fa fa-chevron-right fa-chevron-nav" aria-hidden="true"></i>
+          </li></a>
+          <a href="#"><li class="mobile-nav">
+            <p class="mobile-nav-text">services</p>
+            <i class="fa fa-chevron-right fa-chevron-nav" aria-hidden="true"></i>
+          </li></a>
+        </ul>
+      </div>
+    `;
+    const mobileNavHolder = document.createElement('div');
+    mobileNavHolder.classList.add('mobile-nav-holder');
+    document.body.append(mobileNavHolder);
+    mobileNavHolder.innerHTML = mobileNav;
+    const mobileNavContainer = document.querySelector('.mobile-nav-container');
+    setTimeout(() => mobileNavHolder.classList.toggle("nav-reveal"), 100);
+    handlers.mobileNavExitEventListener();
+  }
+}
 
+const mobileFilter = {
+  mobileFilterToggle: (target) => {
+    //reavel filter container
+    const filterContainer = document.querySelector('.filter-list-container');
+    filterContainer.classList.toggle('filter-open');
+    //animate the drop down arrow
+    if (target.classList.contains('filter-bar-right-button')) {
+      console.log("It does!")
+      target.childNodes[1].classList.toggle('arrow-toggle');
+    } else {
+      console.log("yay")
+      target.classList.toggle('arrow-toggle');
+    }
+    const filterRightText = document.querySelector('.filter-right-text');
+    filterRightText.classList.toggle('arrow-toggle-border');
+    const filterRightButton = document.querySelector('.filter-bar-right-button');
+    filterRightButton.classList.toggle('arrow-toggle-border');
   }
 }
 
 filter.fetchData(filter.filterStatus);
 handlers.filterInputEventListener();
+handlers.mobileNavEventListener();
+handlers.mobileFilterToggleEventListener();
 
 
 // switch to const and let
