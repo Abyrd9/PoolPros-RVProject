@@ -95,67 +95,67 @@
         margin: 15px
         +medium()
           margin: 1vw
-        .checkbox-input-container
+      .checkbox-input-container
+        position: relative
+        display: flex
+        justify-content: center
+        align-items: center
+        margin: 10px
+        label
+          display: block
+          width: 22px
+          height: 22px
+          border-radius: 5px
           position: relative
+          cursor: pointer
+          z-index: 1
+          background-color: white
+          border: 1px solid $dark-gray
           display: flex
           justify-content: center
           align-items: center
-          margin: 10px
-          label
+          &::after
             display: block
-            width: 22px
-            height: 22px
-            border-radius: 5px
-            position: relative
-            cursor: pointer
-            z-index: 1
-            background-color: white
-            border: 1px solid $dark-gray
-            display: flex
-            justify-content: center
-            align-items: center
-            &::after
-              display: block
-              content: ""
-              position: absolute
-              width: 8px
-              height: 8px
-              background-color: white
-              +mobile()
-                width: 2vw
-                height: 2vw
-            &:hover
-              transition: background-color ease .2s
-              background-color: rgba(33, 109, 223, .05)
-            +mobile()
-              width: 5vw
-              height: 5vw
-          .checked
-            background-color: $light-blue
-          input[type=checkbox]
+            content: ""
             position: absolute
-            visibility: hidden
-        .input-text
-          @include regular-font
-          text-transform: capitalize
-          font-size: 12px
-          +mobile()
-            font-size: 3vw
-        .question-button
-          @include bold-font
-          font-size: 10px
-          color: $light-blue
-          background-color: $dark-gray
-          width: 20px
-          height: 20px
-          border-radius: 3px
-          margin-left: 15px
+            width: 8px
+            height: 8px
+            background-color: white
+            +mobile()
+              width: 2vw
+              height: 2vw
           &:hover
-            cursor: pointer
+            transition: background-color ease .2s
+            background-color: rgba(33, 109, 223, .05)
           +mobile()
             width: 5vw
             height: 5vw
-            font-size: 2.5vw
+        .checked
+          background-color: $light-blue
+        input[type=checkbox]
+          position: absolute
+          visibility: hidden
+      .input-text
+        @include regular-font
+        text-transform: capitalize
+        font-size: 12px
+        +mobile()
+          font-size: 3vw
+      .question-button
+        @include bold-font
+        font-size: 10px
+        color: $light-blue
+        background-color: $dark-gray
+        width: 20px
+        height: 20px
+        border-radius: 3px
+        margin-left: 15px
+        &:hover
+          cursor: pointer
+        +mobile()
+          width: 5vw
+          height: 5vw
+          font-size: 2.5vw
 
 .arrow-toggle-border
   border-bottom: 1px solid $dark-gray !important

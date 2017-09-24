@@ -380,75 +380,75 @@ button {
       @media screen and (max-width: 1100px) {
         .filter-bar-full .filter-bar .filter-open .filter-input-container {
           margin: 1vw; } }
-      .filter-bar-full .filter-bar .filter-open .filter-input-container .checkbox-input-container {
+    .filter-bar-full .filter-bar .filter-open .checkbox-input-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px; }
+      .filter-bar-full .filter-bar .filter-open .checkbox-input-container label {
+        display: block;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
         position: relative;
+        cursor: pointer;
+        z-index: 1;
+        background-color: white;
+        border: 1px solid #D8D8D8;
         display: flex;
         justify-content: center;
-        align-items: center;
-        margin: 10px; }
-        .filter-bar-full .filter-bar .filter-open .filter-input-container .checkbox-input-container label {
+        align-items: center; }
+        .filter-bar-full .filter-bar .filter-open .checkbox-input-container label::after {
           display: block;
-          width: 22px;
-          height: 22px;
-          border-radius: 5px;
-          position: relative;
-          cursor: pointer;
-          z-index: 1;
-          background-color: white;
-          border: 1px solid #D8D8D8;
-          display: flex;
-          justify-content: center;
-          align-items: center; }
-          .filter-bar-full .filter-bar .filter-open .filter-input-container .checkbox-input-container label::after {
-            display: block;
-            content: "";
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background-color: white; }
-            @media screen and (max-width: 750px) {
-              .filter-bar-full .filter-bar .filter-open .filter-input-container .checkbox-input-container label::after {
-                width: 2vw;
-                height: 2vw; } }
-          .filter-bar-full .filter-bar .filter-open .filter-input-container .checkbox-input-container label:hover {
-            transition: background-color ease 0.2s;
-            background-color: rgba(33, 109, 223, 0.05); }
-          @media screen and (max-width: 750px) {
-            .filter-bar-full .filter-bar .filter-open .filter-input-container .checkbox-input-container label {
-              width: 5vw;
-              height: 5vw; } }
-        .filter-bar-full .filter-bar .filter-open .filter-input-container .checkbox-input-container .checked {
-          background-color: #216DDF; }
-        .filter-bar-full .filter-bar .filter-open .filter-input-container .checkbox-input-container input[type=checkbox] {
+          content: "";
           position: absolute;
-          visibility: hidden; }
-      .filter-bar-full .filter-bar .filter-open .filter-input-container .input-text {
-        font-family: "Open Sans", sans-serif;
-        font-weight: 400;
-        color: #3F3F3F;
-        text-transform: capitalize;
-        font-size: 12px; }
+          width: 8px;
+          height: 8px;
+          background-color: white; }
+          @media screen and (max-width: 750px) {
+            .filter-bar-full .filter-bar .filter-open .checkbox-input-container label::after {
+              width: 2vw;
+              height: 2vw; } }
+        .filter-bar-full .filter-bar .filter-open .checkbox-input-container label:hover {
+          transition: background-color ease 0.2s;
+          background-color: rgba(33, 109, 223, 0.05); }
         @media screen and (max-width: 750px) {
-          .filter-bar-full .filter-bar .filter-open .filter-input-container .input-text {
-            font-size: 3vw; } }
-      .filter-bar-full .filter-bar .filter-open .filter-input-container .question-button {
-        font-family: "Open Sans", sans-serif;
-        font-weight: 700;
-        color: #3F3F3F;
-        font-size: 10px;
-        color: #216DDF;
-        background-color: #D8D8D8;
-        width: 20px;
-        height: 20px;
-        border-radius: 3px;
-        margin-left: 15px; }
-        .filter-bar-full .filter-bar .filter-open .filter-input-container .question-button:hover {
-          cursor: pointer; }
-        @media screen and (max-width: 750px) {
-          .filter-bar-full .filter-bar .filter-open .filter-input-container .question-button {
+          .filter-bar-full .filter-bar .filter-open .checkbox-input-container label {
             width: 5vw;
-            height: 5vw;
-            font-size: 2.5vw; } }
+            height: 5vw; } }
+      .filter-bar-full .filter-bar .filter-open .checkbox-input-container .checked {
+        background-color: #216DDF; }
+      .filter-bar-full .filter-bar .filter-open .checkbox-input-container input[type=checkbox] {
+        position: absolute;
+        visibility: hidden; }
+    .filter-bar-full .filter-bar .filter-open .input-text {
+      font-family: "Open Sans", sans-serif;
+      font-weight: 400;
+      color: #3F3F3F;
+      text-transform: capitalize;
+      font-size: 12px; }
+      @media screen and (max-width: 750px) {
+        .filter-bar-full .filter-bar .filter-open .input-text {
+          font-size: 3vw; } }
+    .filter-bar-full .filter-bar .filter-open .question-button {
+      font-family: "Open Sans", sans-serif;
+      font-weight: 700;
+      color: #3F3F3F;
+      font-size: 10px;
+      color: #216DDF;
+      background-color: #D8D8D8;
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      margin-left: 15px; }
+      .filter-bar-full .filter-bar .filter-open .question-button:hover {
+        cursor: pointer; }
+      @media screen and (max-width: 750px) {
+        .filter-bar-full .filter-bar .filter-open .question-button {
+          width: 5vw;
+          height: 5vw;
+          font-size: 2.5vw; } }
 
 .arrow-toggle-border {
   border-bottom: 1px solid #D8D8D8 !important; }
