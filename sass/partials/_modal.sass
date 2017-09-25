@@ -22,9 +22,12 @@
     opacity: 0
     transform: translateY(20%)
     transition: all ease 0.3s
+    +medium()
+      margin: 50px 0px
     +mobile()
       max-width: 100%
       width: 95%
+      margin: 100px 0px
   .card-reveal
     transition: all ease 0.3s
     opacity: 1
@@ -130,6 +133,9 @@
           font-style: italic
           color: $modal-gray
           font-size: 12px
+        #optional-second
+          +mobile()
+            display: none
       .modal-input
         border: 2px solid $modal-gray
         border-radius: 3px
@@ -145,6 +151,8 @@
         padding: 10px
       .modal-button-container
         margin: 5px 0px
+        +mobile()
+          display: none
         .modal-input-button
           width: 60px
           height: 30px
@@ -205,3 +213,41 @@
     @include regular-font
     color: $modal-charcoal
     font-size: 12px
+
+.modal-button-container-mobile
+  display: none
+  +mobile()
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+  .modal-button-mobile
+    padding: 0
+    margin-right: 10px
+    content: ""
+    width: 4.5vw
+    height: 4.5vw
+    background-color: $dark-gray
+    border: .3vw solid black
+    border-radius: 3px
+    &:active
+      height: 4.5vw
+      width: 4.5vw
+      background-color: white
+      border: 1.5vw solid $light-blue
+      border-radius: 3px
+      outline: none
+    &:focus
+      height: 4.5vw
+      width: 4.5vw
+      background-color: white
+      border: 1.5vw solid $light-blue
+      border-radius: 3px
+      outline: none
+    &:hover
+      cursor: pointer
+  .modal-button-text
+    margin-right: 10px
+    @include regular-font
+    color: $modal-charcoal
+    font-size: 2.5vw

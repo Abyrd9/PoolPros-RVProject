@@ -721,10 +721,14 @@ button {
     opacity: 0;
     transform: translateY(20%);
     transition: all ease 0.3s; }
+    @media screen and (max-width: 1100px) {
+      .full-modal-container .modal-card {
+        margin: 50px 0px; } }
     @media screen and (max-width: 750px) {
       .full-modal-container .modal-card {
         max-width: 100%;
-        width: 95%; } }
+        width: 95%;
+        margin: 100px 0px; } }
   .full-modal-container .card-reveal {
     transition: all ease 0.3s;
     opacity: 1;
@@ -848,6 +852,9 @@ button {
           font-style: italic;
           color: #BEBEBE;
           font-size: 12px; }
+        @media screen and (max-width: 750px) {
+          .modal-content-container .modal-form-container .modal-input-container .input-title-container #optional-second {
+            display: none; } }
       .modal-content-container .modal-form-container .modal-input-container .modal-input {
         border: 2px solid #BEBEBE;
         border-radius: 3px;
@@ -864,6 +871,9 @@ button {
         padding: 10px; }
       .modal-content-container .modal-form-container .modal-input-container .modal-button-container {
         margin: 5px 0px; }
+        @media screen and (max-width: 750px) {
+          .modal-content-container .modal-form-container .modal-input-container .modal-button-container {
+            display: none; } }
         .modal-content-container .modal-form-container .modal-input-container .modal-button-container .modal-input-button {
           width: 60px;
           height: 30px;
@@ -933,6 +943,47 @@ button {
     color: #3F3F3F;
     color: #616161;
     font-size: 12px; }
+
+.modal-button-container-mobile {
+  display: none; }
+  @media screen and (max-width: 750px) {
+    .modal-button-container-mobile {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center; } }
+  .modal-button-container-mobile .modal-button-mobile {
+    padding: 0;
+    margin-right: 10px;
+    content: "";
+    width: 4.5vw;
+    height: 4.5vw;
+    background-color: #D8D8D8;
+    border: 0.3vw solid black;
+    border-radius: 3px; }
+    .modal-button-container-mobile .modal-button-mobile:active {
+      height: 4.5vw;
+      width: 4.5vw;
+      background-color: white;
+      border: 1.5vw solid #216DDF;
+      border-radius: 3px;
+      outline: none; }
+    .modal-button-container-mobile .modal-button-mobile:focus {
+      height: 4.5vw;
+      width: 4.5vw;
+      background-color: white;
+      border: 1.5vw solid #216DDF;
+      border-radius: 3px;
+      outline: none; }
+    .modal-button-container-mobile .modal-button-mobile:hover {
+      cursor: pointer; }
+  .modal-button-container-mobile .modal-button-text {
+    margin-right: 10px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    color: #3F3F3F;
+    color: #616161;
+    font-size: 2.5vw; }
 
 .footer-full {
   display: flex;

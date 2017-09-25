@@ -202,37 +202,43 @@ const cardModal = {
                 <h3 class="input-title">first and last name</h3>
                 <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
               </div>
-              <input oninput="cardModal.modalInputChange(this, this.value)" type="text" placeholder="" name="name" class="modal-input">
+              <input id="name" oninput="cardModal.modalInputChange(this, this.value)" type="text" placeholder="" name="name" class="modal-input">
             </div>
             <div class="modal-input-container phone-number">
               <div class="input-title-container">
                 <h3 class="input-title">phone number</h3>
                 <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
               </div>
-              <input oninput="cardModal.modalInputChange(this, this.value)" type="tel" placeholder="" name="phone-number" class="modal-input">
+              <input id="phone" oninput="cardModal.modalInputChange(this, this.value)" type="tel" placeholder="" name="phone-number" class="modal-input">
             </div>
             <div class="modal-input-container">
               <div class="input-title-container">
                 <h3 class="input-title">email address</h3>
                 <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
               </div>
-              <input oninput="cardModal.modalInputChange(this, this.value)" type="text" placeholder="" name="email" class="modal-input">
+              <input id="email" oninput="cardModal.modalInputChange(this, this.value)" type="text" placeholder="" name="email" class="modal-input">
             </div>
             <div class="modal-input-container">
               <div class="input-title-container">
                 <h3 class="input-title">comments or questions</h3>
                 <p class="input-optional">optional</p>
               </div>
-              <textarea oninput="cardModal.modalInputChange(this, this.value)" rows="5" type="text" placeholder="" name="comments-questions" class="modal-input modal-textarea"></textarea>
+              <textarea id="comment" oninput="cardModal.modalInputChange(this, this.value)" rows="5" type="text" placeholder="" name="comments-questions" class="modal-input modal-textarea"></textarea>
             </div>
             <div class="modal-input-container">
               <div class="input-title-container">
                 <h3 class="input-title">do you currently own a pool or spa?</h3>
-                <p class="input-optional">optional</p>
+                <p class="input-optional" id="optional-second">optional</p>
               </div>
               <div class="modal-button-container">
                 <input type="button" value="Yes" class="modal-input-button">
                 <input type="button" value="No" class="modal-input-button">
+              </div>
+              <div class="modal-button-container-mobile">
+                <input type="button" class="modal-button-mobile">
+                <p class="modal-button-text">Yes</p>
+                <input type="button" class="modal-button-mobile">
+                <p class="modal-button-text">No</p>
               </div>
             </div>
             <div class="form-footer-container">
@@ -270,8 +276,7 @@ const cardModal = {
       setTimeout(() => document.body.removeChild(modalContainer), 500)
     })
     sendButton.addEventListener('click', () => {
-      cardModal.modalAnimation(modalContainer, modalCard)
-      setTimeout(() => document.body.removeChild(modalContainer), 500)
+      cardModal.sendEmail(modalContainer, modalCard);
     })
   },
   modalAnimation: (modalContainer, modalCard) => {
@@ -285,10 +290,32 @@ const cardModal = {
   },
   modalInputChange: function(input, inputValue) {
     const check = input.parentNode.childNodes[1].childNodes[3];
-    if (inputValue !== "") {
-      check.classList.contains('modal-checked') ? null : check.classList.toggle('modal-checked');
-    } else {
-      check.classList.toggle('modal-checked')
+    if (input.id === "name") {
+      if (inputValue.length >= 5 && typeof inputValue === 'string') {
+        check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
+      } else if (inputValue === "" || inputValue.length < 5 || typeof inputValue !== 'string') {
+        check.classList.remove('modal-checked')
+      }
+    } else if (input.id === "phone") {
+      if (inputValue.length >= 10 && typeof inputValue !== 'NaN') {
+        check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
+      } else if (inputValue === "" || inputValue.length < 10 || typeof inputValue === 'NaN') {
+        check.classList.remove('modal-checked')
+      }
+    } else if (input.id === "email") {
+      if (inputValue.length >= 5 && inputValue.includes("@" && ".com")) {
+        check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
+      } else if (inputValue === "" || inputValue.length < 5 || !inputValue.includes("@" && ".com")) {
+        check.classList.remove('modal-checked')
+      }
+    }
+  },
+  sendEmail: (modalContainer, modalCard) => {
+    const modalForms = document.querySelector(".modal-form-container");
+    const checks = document.querySelectorAll(".modal-checked");
+    if (checks.length === 3) {
+      cardModal.modalAnimation(modalContainer, modalCard)
+      setTimeout(() => document.body.removeChild(modalContainer), 500)
     }
   }
 }
