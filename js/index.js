@@ -1,3 +1,5 @@
+
+//All function having to do with the filter
 const filter = {
 
   // initial filter status
@@ -13,13 +15,13 @@ const filter = {
     fetch('https://api.myjson.com/bins/lgb21')
       .then(res => {
         res.json().then(function(data) {
-          var data = data;
+          const data = data;
           filter.updateStatus(filterStatus, data)
         })
       })
   },
 
-  // fire from handlers - update the filterStatus array
+  //fired from filter button events - update the filterStatus array
   updateStatus: (filterStatus, data) => {
     // set new certificantions array
     cert = [];
@@ -34,32 +36,30 @@ const filter = {
         cert.push(e.certifications)
       }
     })
-    // fire off filterCards
     filter.filterCards(cert, dealers, data)
   },
 
   // render cards based on filter values
   filterCards: (cert, dealers, data) => {
-    // Create
     const filteredDealers = {
       number: 0
     }
     // Empty the cardContainer of any current cards
-    var cardContainer = document.querySelector(".card-container");
+    const cardContainer = document.querySelector(".card-container");
     cardContainer.innerHTML = ""
     // if any value in the dealer certifications array matches any value in the cert array, fire off createCardElement
     dealers.forEach(function(e, i, arr) {
       // set cardDate for the specific individual dealer
-      var cardData = e
+      const cardData = e
       // set function for comparing values between both arrays
-      var isMatching = function(cardDataCerts, cert) {
+      const isMatching = function(cardDataCerts, cert) {
         return cert.some(function(el) {
           return cardDataCerts.indexOf(el) >= 0;
         })
       }
       // if the dealer certificates have a value from cert array, fire off createCardElement
       if (isMatching(cardData.data.certifications, cert) === true) {
-        var card = document.createElement('div');
+        let card = document.createElement('div');
         filteredDealers.number = filteredDealers.number + 1;
         filter.createCardElement(card, cardData)
       } else {
@@ -67,7 +67,7 @@ const filter = {
       }
     })
     filter.filterInfo(filteredDealers.number, data);
-    cardModal.modalEventListener();
+    handlers.modalEventListener();
   },
 
   filterInfo: function(number, data) {
@@ -79,10 +79,10 @@ const filter = {
   createCardElement: (card, cardData) => {
     //append card to the cardContainer
     card.classList.add("card");
-    var cardContainer = document.querySelector(".card-container");
+    const cardContainer = document.querySelector(".card-container");
     cardContainer.append(card);
     // full HTML card element
-    var cardElement = `
+    const cardElement = `
     <div class="card-title-container">
       <h2 class="card-title">${cardData.data.name}</h2>
     </div>
@@ -119,9 +119,9 @@ const filter = {
   }
 }
 
-var dataSifting = {
+const dataSifting = {
   sundayCalc: (cardData) => {
-    var weekHoursObj = cardData.data.weekHours;
+    const weekHoursObj = cardData.data.weekHours;
     if (weekHoursObj.sun === "") {
       return "- CLOSED";
     } else if (weekHoursObj.sun === "On Call") {
@@ -131,7 +131,7 @@ var dataSifting = {
     }
   },
   saturdayCalc: (cardData) => {
-    var weekHoursObj = cardData.data.weekHours;
+    const weekHoursObj = cardData.data.weekHours;
     if (weekHoursObj.sat === "") {
       return "- CLOSED"
     } else {
@@ -143,10 +143,10 @@ var dataSifting = {
     const starIcon = `<i class="fa fa-star fa-card-icon" aria-hidden="true"></i>`
     const houseIcon = `<i class="fa fa-home fa-card-icon" aria-hidden="true"></i>`
     if (cert === "Installation Pro") {
-      var currentIcon = starIcon;
+      let currentIcon = starIcon;
       return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
     } else if (cert === "Residential Pro") {
-      var currentIcon = houseIcon;
+      let currentIcon = houseIcon;
       return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
     }
   },
@@ -155,30 +155,17 @@ var dataSifting = {
     const cogIcon = `<i class="fa fa-cog fa-card-icon" aria-hidden="true"></i>`
     const userIcon = `<i class="fa fa-user fa-card-icon" aria-hidden="true"></i>`
     if (cert === "Service Pro") {
-      var currentIcon = cogIcon;
+      let currentIcon = cogIcon;
       return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
     } else if (cert === "Commercial Pro") {
-      var currentIcon = userIcon;
+      let currentIcon = userIcon;
       return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
     }
   },
 }
 
 const cardModal = {
-  modalEventListener: () => {
-    const cardButtons = document.querySelectorAll(".card-button");
-    for (let i = 0; i < cardButtons.length; i++) {
-      cardButtons[i].addEventListener('click', e => {
-        if (e.target.classList.contains("card-button")) {
-          let button = e.target;
-          cardModal.createModal(button)
-        } else {
-          let button = e.target.parentNode;
-          cardModal.createModal(button)
-        }
-      })
-    }
-  },
+  //create the modal and insert into DOM
   createModal: (button) => {
     const dealerTitle = button.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].innerHTML;
     const modal = `
@@ -256,7 +243,6 @@ const cardModal = {
         </div>
       </div>
     `;
-    //modal animation
     const modalContainer = document.createElement("div");
     modalContainer.classList.add("full-modal-container");
     document.body.append(modalContainer);
@@ -268,6 +254,7 @@ const cardModal = {
     //fire off function for exiting modal
     cardModal.deleteModal(modalContainer, modalCard);
   },
+  //delete the modal off the screen, either from the x button or the send email
   deleteModal: (modalContainer, modalCard) => {
     const exitButton = document.querySelector(".fa-modal-x");
     const sendButton = document.querySelector(".form-footer-button");
@@ -279,6 +266,7 @@ const cardModal = {
       cardModal.sendEmail(modalContainer, modalCard);
     })
   },
+  //toggle the animation for the modal
   modalAnimation: (modalContainer, modalCard) => {
     if (modalContainer.classList.contains("show")) {
       setTimeout(() => modalCard.classList.toggle("card-reveal"), 100)
@@ -288,6 +276,7 @@ const cardModal = {
       setTimeout(() => modalCard.classList.toggle("card-reveal"), 200)
     }
   },
+  //Validate that the correct values are being enetered into the modal input fields
   modalInputChange: function(input, inputValue) {
     const check = input.parentNode.childNodes[1].childNodes[3];
     if (input.id === "name") {
@@ -310,6 +299,7 @@ const cardModal = {
       }
     }
   },
+  //make sure all required inputs are filled out before sending (not actually sending anything)
   sendEmail: (modalContainer, modalCard) => {
     const modalForms = document.querySelector(".modal-form-container");
     const checks = document.querySelectorAll(".modal-checked");
@@ -320,13 +310,12 @@ const cardModal = {
   }
 }
 
-
+// all Event Listeners
 const handlers = {
-
   //create Event Listener for inputs, fire-off state change when clicked
   filterInputEventListener: () => {
     //pull node list containing all checkbox input containers
-    var checkboxContainers = document.querySelectorAll(".checkbox-input-container");
+    const checkboxContainers = document.querySelectorAll(".checkbox-input-container");
     for (let i = 0; i < checkboxContainers.length; i++) {
       checkboxContainers[i].childNodes[1].addEventListener('click', (e) => {
         e.target.classList.toggle("checked")
@@ -340,12 +329,29 @@ const handlers = {
       })
     }
   },
+  //Create event listener for the card buttons once they are inserted into DOM
+  modalEventListener: () => {
+    const cardButtons = document.querySelectorAll(".card-button");
+    for (let i = 0; i < cardButtons.length; i++) {
+      cardButtons[i].addEventListener('click', e => {
+        if (e.target.classList.contains("card-button")) {
+          let button = e.target;
+          cardModal.createModal(button)
+        } else {
+          let button = e.target.parentNode;
+          cardModal.createModal(button)
+        }
+      })
+    }
+  },
+  //Create event listener for navigation toggling button on mobile screens
   mobileNavEventListener: () => {
     const mobileNavToggleButton = document.querySelector(".menu-toggle-button");
     mobileNavToggleButton.addEventListener('click', (e) => {
       mobileMenu.createMobileNav();
     })
   },
+  //Create event listener for the exit button on the navigation on mobile screens
   mobileNavExitEventListener: () => {
     const mobileNavExitButton = document.querySelector('.fa-nav-x');
     mobileNavExitButton.addEventListener('click', (e) => {
@@ -356,6 +362,7 @@ const handlers = {
       document.body.removeChild(mobileNav)
     })
   },
+  //Create event listener for the filter list on the mobile screen
   mobileFilterToggleEventListener: () => {
     const filterResultsButton = document.querySelector(".filter-bar-right-button");
     filterResultsButton.addEventListener('click', (e) => {
@@ -365,7 +372,9 @@ const handlers = {
 
 }
 
+//all functions to do with the navigation menu on mobile
 const mobileMenu = {
+  //creating the mobile menu
   createMobileNav: () => {
     const mobileNav = `
       <div class="mobile-nav-container">
@@ -405,6 +414,7 @@ const mobileMenu = {
   }
 }
 
+// toggle the first list on mobile from the arrow button
 const mobileFilter = {
   mobileFilterToggle: (target) => {
     //reavel filter container
@@ -425,15 +435,9 @@ const mobileFilter = {
   }
 }
 
+//fetch json data
 filter.fetchData(filter.filterStatus);
+//create event listeners
 handlers.filterInputEventListener();
 handlers.mobileNavEventListener();
 handlers.mobileFilterToggleEventListener();
-
-
-// switch to const and let
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-// http://getbem.com/
-// Do Module 1 and 3 Wes Bos course before turning in project.
-
-//create DOM node elements
