@@ -151,7 +151,7 @@ button {
           display: flex;
           align-items: center; }
           .nav-bar-full .nav-bar .nav-right-content .navigation-container .navigation-list:hover {
-            transition: all ease 0.3s;
+            transition: all ease .3s;
             cursor: pointer;
             background-color: #216DDF;
             color: white; }
@@ -172,7 +172,7 @@ button {
         @media screen and (max-width: 1100px) {
           .nav-bar-full .nav-bar .nav-right-content .nav-button {
             padding: 1vw 1.5vw;
-            margin-left: 0.5vw; } }
+            margin-left: .5vw; } }
         @media screen and (max-width: 750px) {
           .nav-bar-full .nav-bar .nav-right-content .nav-button {
             padding: 10px 12px;
@@ -350,10 +350,10 @@ button {
                 cursor: pointer; } }
           .filter-bar-full .filter-bar .filter-bar-text-container .filter-right-text-container .filter-bar-right-button .fa-filter-arrow {
             font-size: 3vw;
-            transition: all 0.3s ease;
+            transition: all .3s ease;
             transform: rotate(0); }
           .filter-bar-full .filter-bar .filter-bar-text-container .filter-right-text-container .filter-bar-right-button .arrow-toggle {
-            transition: all 0.3s ease;
+            transition: all .3s ease;
             transform: rotate(180deg); }
     .filter-bar-full .filter-bar .filter-list-container {
       display: flex;
@@ -368,31 +368,25 @@ button {
           align-items: flex-start;
           width: 80%;
           border: 1px solid #D8D8D8;
-          display: none;
-          opacity: 0;
-          transition: all ease 0.3s; } }
+          display: none; } }
     @media screen and (max-width: 750px) {
       .filter-bar-full .filter-bar .filter-open {
         display: flex; } }
-    @media screen and (max-width: 750px) {
-      .filter-bar-full .filter-bar .filter-reveal {
-        opacity: 1;
-        transition: all ease 0.3s; } }
-    .filter-bar-full .filter-bar .filter-reveal .filter-input-container {
+    .filter-bar-full .filter-bar .filter-open .filter-input-container {
       display: flex;
       flex-direction: row;
       align-items: center;
       margin: 15px; }
       @media screen and (max-width: 1100px) {
-        .filter-bar-full .filter-bar .filter-reveal .filter-input-container {
+        .filter-bar-full .filter-bar .filter-open .filter-input-container {
           margin: 1vw; } }
-    .filter-bar-full .filter-bar .filter-reveal .checkbox-input-container {
+    .filter-bar-full .filter-bar .filter-open .checkbox-input-container {
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 10px; }
-      .filter-bar-full .filter-bar .filter-reveal .checkbox-input-container label {
+      .filter-bar-full .filter-bar .filter-open .checkbox-input-container label {
         display: block;
         width: 22px;
         height: 22px;
@@ -405,7 +399,7 @@ button {
         display: flex;
         justify-content: center;
         align-items: center; }
-        .filter-bar-full .filter-bar .filter-reveal .checkbox-input-container label::after {
+        .filter-bar-full .filter-bar .filter-open .checkbox-input-container label::after {
           display: block;
           content: "";
           position: absolute;
@@ -413,31 +407,31 @@ button {
           height: 8px;
           background-color: white; }
           @media screen and (max-width: 750px) {
-            .filter-bar-full .filter-bar .filter-reveal .checkbox-input-container label::after {
+            .filter-bar-full .filter-bar .filter-open .checkbox-input-container label::after {
               width: 2vw;
               height: 2vw; } }
-        .filter-bar-full .filter-bar .filter-reveal .checkbox-input-container label:hover {
-          transition: background-color ease 0.2s;
+        .filter-bar-full .filter-bar .filter-open .checkbox-input-container label:hover {
+          transition: background-color ease .2s;
           background-color: rgba(33, 109, 223, 0.05); }
         @media screen and (max-width: 750px) {
-          .filter-bar-full .filter-bar .filter-reveal .checkbox-input-container label {
+          .filter-bar-full .filter-bar .filter-open .checkbox-input-container label {
             width: 5vw;
             height: 5vw; } }
-      .filter-bar-full .filter-bar .filter-reveal .checkbox-input-container .checked {
+      .filter-bar-full .filter-bar .filter-open .checkbox-input-container .checked {
         background-color: #216DDF; }
-      .filter-bar-full .filter-bar .filter-reveal .checkbox-input-container input[type=checkbox] {
+      .filter-bar-full .filter-bar .filter-open .checkbox-input-container input[type=checkbox] {
         position: absolute;
         visibility: hidden; }
-    .filter-bar-full .filter-bar .filter-reveal .input-text {
+    .filter-bar-full .filter-bar .filter-open .input-text {
       font-family: "Open Sans", sans-serif;
       font-weight: 400;
       color: #3F3F3F;
       text-transform: capitalize;
       font-size: 12px; }
       @media screen and (max-width: 750px) {
-        .filter-bar-full .filter-bar .filter-reveal .input-text {
+        .filter-bar-full .filter-bar .filter-open .input-text {
           font-size: 3vw; } }
-    .filter-bar-full .filter-bar .filter-reveal .question-button {
+    .filter-bar-full .filter-bar .filter-open .question-button {
       font-family: "Open Sans", sans-serif;
       font-weight: 700;
       color: #3F3F3F;
@@ -448,10 +442,10 @@ button {
       height: 20px;
       border-radius: 3px;
       margin-left: 15px; }
-      .filter-bar-full .filter-bar .filter-reveal .question-button:hover {
+      .filter-bar-full .filter-bar .filter-open .question-button:hover {
         cursor: pointer; }
       @media screen and (max-width: 750px) {
-        .filter-bar-full .filter-bar .filter-reveal .question-button {
+        .filter-bar-full .filter-bar .filter-open .question-button {
           width: 5vw;
           height: 5vw;
           font-size: 2.5vw; } }
@@ -723,7 +717,7 @@ button {
     width: 80%;
     background-color: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    /*animation */
+    /*animation*/
     opacity: 0;
     transform: translateY(20%);
     transition: all ease 0.3s; }
@@ -744,7 +738,7 @@ button {
   visibility: visible; }
 
 .show {
-  transition: all ease 0.3s;
+  transition: all ease .3s;
   background-color: rgba(63, 63, 63, 0.5); }
 
 .modal-header-container {
@@ -965,7 +959,7 @@ button {
     width: 4.5vw;
     height: 4.5vw;
     background-color: #D8D8D8;
-    border: 0.3vw solid black;
+    border: .3vw solid black;
     border-radius: 3px; }
     .modal-button-container-mobile .modal-button-mobile:active {
       height: 4.5vw;
@@ -1099,31 +1093,35 @@ button {
       box-shadow: 0px 5px 4.3px 0.7px rgba(0, 0, 0, 0.23);
       z-index: 2;
       opacity: 0;
-      transform: translateY(-20%);
-      transition: all ease 0.3s; } }
-  .mobile-nav-holder .mobile-nav-container {
+      transform: translateY(-20%); } }
+
+.nav-reveal {
+  transition: all ease .3s;
+  opacity: 1;
+  transform: translateY(0); }
+  .nav-reveal .mobile-nav-container {
     background-color: white;
     width: 100%;
     margin: 8px 0px;
     display: flex;
     flex-direction: column;
     align-items: center; }
-    .mobile-nav-holder .mobile-nav-container .mobile-nav-header-container {
+    .nav-reveal .mobile-nav-container .mobile-nav-header-container {
       margin: 10px 0px;
       width: 95%;
       background-color: white;
       display: flex;
       flex-direction: column; }
-      .mobile-nav-holder .mobile-nav-container .mobile-nav-header-container .header-exit-button-container {
+      .nav-reveal .mobile-nav-container .mobile-nav-header-container .header-exit-button-container {
         width: 100%;
         display: flex;
         justify-content: flex-end; }
-        .mobile-nav-holder .mobile-nav-container .mobile-nav-header-container .header-exit-button-container .fa-nav-x {
+        .nav-reveal .mobile-nav-container .mobile-nav-header-container .header-exit-button-container .fa-nav-x {
           color: #0bc9c8;
           font-size: 5vw; }
-          .mobile-nav-holder .mobile-nav-container .mobile-nav-header-container .header-exit-button-container .fa-nav-x:hover {
+          .nav-reveal .mobile-nav-container .mobile-nav-header-container .header-exit-button-container .fa-nav-x:hover {
             cursor: pointer; }
-      .mobile-nav-holder .mobile-nav-container .mobile-nav-header-container .mobile-nav-title {
+      .nav-reveal .mobile-nav-container .mobile-nav-header-container .mobile-nav-title {
         font-family: "Open Sans", sans-serif;
         font-weight: 700;
         color: #3F3F3F;
@@ -1131,15 +1129,15 @@ button {
         text-transform: uppercase;
         font-size: 5vw;
         align-self: center; }
-    .mobile-nav-holder .mobile-nav-container .mobile-nav-content-container {
+    .nav-reveal .mobile-nav-container .mobile-nav-content-container {
       width: 100%; }
-      .mobile-nav-holder .mobile-nav-container .mobile-nav-content-container a {
+      .nav-reveal .mobile-nav-container .mobile-nav-content-container a {
         font-family: "Open Sans", sans-serif;
         font-weight: 600;
         color: #3F3F3F;
         color: #616161;
         text-decoration: none; }
-      .mobile-nav-holder .mobile-nav-container .mobile-nav-content-container .mobile-nav {
+      .nav-reveal .mobile-nav-container .mobile-nav-content-container .mobile-nav {
         background-color: #F6F6F6;
         width: 100%;
         margin: 5px 0px;
@@ -1147,18 +1145,9 @@ button {
         flex-direction: row;
         justify-content: space-between;
         align-items: center; }
-        .mobile-nav-holder .mobile-nav-container .mobile-nav-content-container .mobile-nav:hover {
-          background-color: #ECECEC; }
-        .mobile-nav-holder .mobile-nav-container .mobile-nav-content-container .mobile-nav .mobile-nav-text {
+        .nav-reveal .mobile-nav-container .mobile-nav-content-container .mobile-nav .mobile-nav-text {
           font-size: 3vw;
           padding: 3vw 4vw; }
-        .mobile-nav-holder .mobile-nav-container .mobile-nav-content-container .mobile-nav .fa-chevron-nav {
+        .nav-reveal .mobile-nav-container .mobile-nav-content-container .mobile-nav .fa-chevron-nav {
           font-size: 3vw;
           padding: 3vw 4vw; }
-
-.nav-reveal {
-  transition: all ease 0.3s;
-  opacity: 1;
-  transform: translateY(0); }
-
-/*# sourceMappingURL=main.css.map */

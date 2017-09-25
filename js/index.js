@@ -15,7 +15,6 @@ const filter = {
     fetch('https://api.myjson.com/bins/lgb21')
       .then(res => {
         res.json().then(function(data) {
-          const data = data;
           filter.updateStatus(filterStatus, data)
         })
       })
@@ -62,8 +61,6 @@ const filter = {
         let card = document.createElement('div');
         filteredDealers.number = filteredDealers.number + 1;
         filter.createCardElement(card, cardData)
-      } else {
-        console.log("filtered out")
       }
     })
     filter.filterInfo(filteredDealers.number, data);
@@ -115,7 +112,6 @@ const filter = {
     `;
     //insert HTML card template into the card
     card.innerHTML = cardElement;
-    console.log(card);
   }
 }
 
@@ -143,7 +139,6 @@ const dataSifting = {
   },
   //make sure correct certifications and icons are showing up on left side
   footerContentFilterLeft: (cert) => {
-    console.log(cert)
     const starIcon = `<i class="fa fa-star fa-card-icon" aria-hidden="true"></i>`
     const houseIcon = `<i class="fa fa-home fa-card-icon" aria-hidden="true"></i>`
     if (cert === "Installation Pro") {
@@ -156,7 +151,6 @@ const dataSifting = {
   },
   //make sure correct certifications and icons are showing up on right side
   footerContentFilterRight: (cert) => {
-    console.log(cert)
     const cogIcon = `<i class="fa fa-cog fa-card-icon" aria-hidden="true"></i>`
     const userIcon = `<i class="fa fa-user fa-card-icon" aria-hidden="true"></i>`
     if (cert === "Service Pro") {
@@ -364,8 +358,7 @@ const handlers = {
       const mobileNavHolder = document.querySelector('.mobile-nav-holder');
       mobileNavHolder.classList.toggle("nav-reveal");
       const mobileNav = e.target.parentNode.parentNode.parentNode.parentNode;
-      console.log(mobileNav)
-      document.body.removeChild(mobileNav)
+      setTimeout(() => document.body.removeChild(mobileNav), 300)
     })
   },
   //Create event listener for the filter list on the mobile screen
@@ -426,12 +419,11 @@ const mobileFilter = {
     //reavel filter container
     const filterContainer = document.querySelector('.filter-list-container');
     filterContainer.classList.toggle('filter-open');
+    setTimeout(() => filterContainer.classList.toggle('filter-reveal'), 50)
     //animate the drop down arrow
     if (target.classList.contains('filter-bar-right-button')) {
-      console.log("It does!")
       target.childNodes[1].classList.toggle('arrow-toggle');
     } else {
-      console.log("yay")
       target.classList.toggle('arrow-toggle');
     }
     const filterRightText = document.querySelector('.filter-right-text');

@@ -11,11 +11,8 @@
     box-shadow: 0px 5px 4.3px 0.7px rgba(0, 0, 0, 0.23)
     z-index: 2
     opacity: 0
-    transform: translateY(-20%)  
-.nav-reveal
-  transition: all ease .3s
-  opacity: 1
-  transform: translateY(0)
+    transform: translateY(-20%)
+    transition: all ease .3s
   .mobile-nav-container
     background-color: white
     width: 100%
@@ -58,9 +55,16 @@
         flex-direction: row
         justify-content: space-between
         align-items: center
+        &:hover
+          background-color: $light-gray
         .mobile-nav-text
           font-size: 3vw
           padding: 3vw 4vw
         .fa-chevron-nav
           font-size: 3vw
           padding: 3vw 4vw
+
+.nav-reveal
+  transition: all ease .3s
+  opacity: 1
+  transform: translateY(0)

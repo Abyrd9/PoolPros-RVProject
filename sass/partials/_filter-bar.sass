@@ -85,9 +85,15 @@
         width: 80%
         border: 1px solid $dark-gray
         display: none
+        opacity: 0
+        transition: all ease .3s
     .filter-open
       +mobile()
         display: flex
+    .filter-reveal
+      +mobile()
+        opacity: 1
+        transition: all ease .3s
       .filter-input-container
         display: flex
         flex-direction: row
