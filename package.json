@@ -1,0 +1,26 @@
+{
+  "name": "PoolPros",
+  "version": "1.0.0",
+  "description": "Test project for the Front End Developer Position at Red Ventures",
+  "main": "index.js",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "node-sass": "^4.5.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abyrd9/PoolPros-RVProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abyrd9/PoolPros-RVProject/issues"
+  },
+  "homepage": "https://github.com/Abyrd9/PoolPros-RVProject#readme"
+}
