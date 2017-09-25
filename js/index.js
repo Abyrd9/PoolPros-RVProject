@@ -119,7 +119,9 @@ const filter = {
   }
 }
 
+//all function for sifting through json data
 const dataSifting = {
+  // make sure correct data is showing up for Sunday
   sundayCalc: (cardData) => {
     const weekHoursObj = cardData.data.weekHours;
     if (weekHoursObj.sun === "") {
@@ -130,6 +132,7 @@ const dataSifting = {
       return weekHoursObj.sun
     }
   },
+  //make sure correct data is showing up for Saturday
   saturdayCalc: (cardData) => {
     const weekHoursObj = cardData.data.weekHours;
     if (weekHoursObj.sat === "") {
@@ -138,6 +141,7 @@ const dataSifting = {
       return weekHoursObj.sat
     }
   },
+  //make sure correct certifications and icons are showing up on left side
   footerContentFilterLeft: (cert) => {
     console.log(cert)
     const starIcon = `<i class="fa fa-star fa-card-icon" aria-hidden="true"></i>`
@@ -150,6 +154,7 @@ const dataSifting = {
       return `<div class="footer-text-container">${currentIcon}<p class="footer-text">${cert}</p></div>`
     }
   },
+  //make sure correct certifications and icons are showing up on right side
   footerContentFilterRight: (cert) => {
     console.log(cert)
     const cogIcon = `<i class="fa fa-cog fa-card-icon" aria-hidden="true"></i>`
@@ -164,6 +169,7 @@ const dataSifting = {
   },
 }
 
+//all functions having to do with pop-up email modal
 const cardModal = {
   //create the modal and insert into DOM
   createModal: (button) => {
