@@ -30,7 +30,7 @@
     <div class='full-width nav-bar-full'>
       <div class='main-container nav-bar'>
         <div class='nav-left-content'>
-          <img src='./img/pool-pros-logo.png' alt='pool-pros-logo' class='logo'>
+          <a href="#"><img src='./img/pool-pros-logo.png' alt='pool-pros-logo' class='logo'></a>
         </div>
         <div class='nav-right-content'>
           <ul class='navigation-container'>
@@ -144,10 +144,114 @@
               <i class='fa fa-share-square-o' aria-hidden='true'></i>
             </div>
           </div>
-          <p class='footer-text'>© 2017 Pool Pros    |    Privacy Policy    |    Terms and Conditions</p>
+          <p class='footer-text'>© 2017 Pool Pros    |    <a href="#">Privacy Policy</a>    |    <a href="#">Terms and Conditions</a></p>
         </div>
       </div>
     </div>
+
+    <!--pop-up modal - Only revealed on Card button click-->
+    <div class="full-modal-container">
+      <div class="modal-card">
+        <div class="modal-header-container">
+            <div class="modal-header-left-container">
+              <h4 class="modal-title-one">email</h4>
+              <h2 class="modal-title-two"></h2>
+            </div>
+            <div class="modal-header-right-container">
+              <i class="fa fa-times fa-modal-x" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="modal-content-container">
+          <p class="modal-content-text">Fill out the form below and Premium Pools & Spas of Charlotte will get in touch.</p>
+          <form action="" class="modal-form-container">
+            <div class="modal-input-container">
+              <div class="input-title-container">
+                <h3 class="input-title">first and last name</h3>
+                <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
+              </div>
+              <input id="name" oninput="cardModal.modalInputChange(this, this.value)" type="text" placeholder="" name="name" class="modal-input">
+            </div>
+            <div class="modal-input-container phone-number">
+              <div class="input-title-container">
+                <h3 class="input-title">phone number</h3>
+                <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
+              </div>
+              <input id="phone" oninput="cardModal.modalInputChange(this, this.value)" type="tel" placeholder="" name="phone-number" class="modal-input">
+            </div>
+            <div class="modal-input-container">
+              <div class="input-title-container">
+                <h3 class="input-title">email address</h3>
+                <i class="fa fa-check fa-modal-check" aria-hidden="true"></i>
+              </div>
+              <input id="email" oninput="cardModal.modalInputChange(this, this.value)" type="text" placeholder="" name="email" class="modal-input">
+            </div>
+            <div class="modal-input-container">
+              <div class="input-title-container">
+                <h3 class="input-title">comments or questions</h3>
+                <p class="input-optional">optional</p>
+              </div>
+              <textarea id="comment" oninput="cardModal.modalInputChange(this, this.value)" rows="5" type="text" placeholder="" name="comments-questions" class="modal-input modal-textarea"></textarea>
+            </div>
+            <div class="modal-input-container">
+              <div class="input-title-container">
+                <h3 class="input-title">do you currently own a pool or spa?</h3>
+                <p class="input-optional" id="optional-second">optional</p>
+              </div>
+              <div class="modal-button-container">
+                <input type="button" value="Yes" class="modal-input-button">
+                <input type="button" value="No" class="modal-input-button">
+              </div>
+              <div class="modal-button-container-mobile">
+                <input type="button" class="modal-button-mobile">
+                <p class="modal-button-text">Yes</p>
+                <input type="button" class="modal-button-mobile">
+                <p class="modal-button-text">No</p>
+              </div>
+            </div>
+            <div class="form-footer-container">
+              <button class="form-footer-button">
+                <p class="form-button-text">Send my email</p>
+                <i class="fa fa-chevron-right form-button-arrow" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer-container">
+          <p class="modal-footer-text">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--Mobile Nav Bar-->
+    <div class="mobile-navigation-full-container">
+      <div class='mobile-nav-container'>
+        <div class='mobile-nav-header-container'>
+          <i class='fa fa-times fa-nav-x' aria-hidden='true'></i>
+          <h2 class='mobile-nav-title'>menu</h2>
+        </div>
+        <ul class='mobile-nav-content-container'>
+          <a href='#'><li class='mobile-nav'>
+            <p class='mobile-nav-text'>pools & spas</p>
+            <i class='fa fa-chevron-right fa-chevron-nav' aria-hidden='true'></i>
+          </li></a>
+          <a href='#'><li class='mobile-nav'>
+            <p class='mobile-nav-text'>supplies</p>
+            <i class='fa fa-chevron-right fa-chevron-nav' aria-hidden='true'></i>
+          </li></a>
+          <a href='#'><li class='mobile-nav'>
+            <p class='mobile-nav-text'>resources</p>
+            <i class='fa fa-chevron-right fa-chevron-nav' aria-hidden='true'></i>
+          </li></a>
+          <a href='#'><li class='mobile-nav'>
+            <p class='mobile-nav-text'>services</p>
+            <i class='fa fa-chevron-right fa-chevron-nav' aria-hidden='true'></i>
+          </li></a>
+        </ul>
+      </div>
+    </div>
+
   <!-- JS files -->
   <script src='js/index.js'></script>
 

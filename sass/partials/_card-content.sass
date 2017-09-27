@@ -3,96 +3,97 @@
   .card-container
     display: flex
     flex-flow: wrap
-    .card
-      max-width: 400px
-      margin: 25px
-      flex: 1 1 100%
-      display: flex
-      flex-direction: column
-      justify-content: space-between
-      align-items: center
-      box-shadow: 0 0px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
-      border-radius: 10px
-      padding-top: 15px
+
+.card
+  max-width: 400px
+  margin: 15px
+  flex: 1 1 100%
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  box-shadow: 0 0px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  border-radius: 10px
+  +mobile()
+    border-radius: 0px
+    margin: 0px 25px
+    max-width: 90%
+  .card-title-container
+    height: 60px
+    width: 85%
+    display: flex
+    align-items: center
+    justify-content: center
+    border-bottom: 2px solid $light-gray
+    padding: 20px 0px
+    margin: 20px 0px
+    +mobile()
+      border-bottom: none
+      margin-bottom: 0px
+      padding: 15px 0px
+      height: 10vw
+    .card-title
+      margin: 0
+      padding: 0
+      @include light-font
+      color: $charcoal
+      text-align: center
+      font-size: 26px
       +mobile()
-        border-radius: 0px
-        margin: 0px 25px
-        max-width: 90%
-      .card-title-container
-        height: 75px
-        width: 90%
-        display: flex
-        align-items: center
-        justify-content: center
-        border-bottom: 2px solid $light-gray
-        padding-bottom: 25px
-        margin-bottom: 15px
-        +mobile()
-          border-bottom: none
-          margin-bottom: 0px
-          padding: 30px 0px
-          height: 10vw
-        .card-title
-          margin: 0
-          padding: 0
-          @include light-font
-          color: $charcoal
-          text-align: center
-          font-size: 26px
-          +mobile()
-            font-size: 5vw
-      .card-content-container
-        width: 100%
-        display: flex
-        flex-direction: column
-        align-items: center
-        .number-container
-          display: flex
-          flex-direction: row
-          justify-content: space-between
-          align-items: center
-          +mobile()
-            background-color: $light-blue
-            padding: 10px
-            max-width: 90%
-            width: auto
-          .fa-phone
-            margin-right: 10px
-            color: white
-            background-color: $light-blue
-            padding: 8px 10px
-            border-radius: 100%
-            align-self: center
-            +mobile()
-              border-radius: 0
-              background-color: $dark-blue
-              font-size: 4vw
-          .number-text
-            display: none
-            +mobile()
-              display: block
-              @include bold-font
-              color: white
-              margin: 0px 10px
-              font-size: 3vw
-          .phone-number
-            @include extra-bold-font
-            font-size: 26px
-            align-self: center
-            margin: 0
-            padding: 0
-            color: $charcoal
-            +mobile()
-              color: white
-              font-size: 4vw
-        .number-sub-text
-          @include regular-font
-          font-size: 12px
-          font-style: italic
-          margin: 10px 0px
-          +mobile()
-            font-size: 2.5vw
-            padding: 10px 0px
+        font-size: 5vw
+
+.card-content-container
+  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  .number-container
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    +mobile()
+      background-color: $light-blue
+      padding: 10px
+      max-width: 90%
+      width: auto
+    .fa-phone
+      margin-right: 10px
+      color: white
+      background-color: $light-blue
+      padding: 8px 10px
+      border-radius: 100%
+      align-self: center
+      +mobile()
+        border-radius: 0
+        background-color: $dark-blue
+        font-size: 4vw
+    .number-text
+      display: none
+      +mobile()
+        display: block
+        @include bold-font
+        color: white
+        margin: 0px 10px
+        font-size: 3vw
+    .phone-number
+      @include extra-bold-font
+      font-size: 26px
+      align-self: center
+      margin: 0
+      padding: 0
+      color: $charcoal
+      +mobile()
+        color: white
+        font-size: 4vw
+  .number-sub-text
+    @include regular-font
+    font-size: 12px
+    font-style: italic
+    margin: 10px 0px
+    +mobile()
+      font-size: 2.5vw
+      padding: 10px 0px
 
 .card-button
   display: flex
@@ -101,6 +102,7 @@
   padding: 10px 20px
   border: 2px solid $green
   border-radius: 3px
+  margin: 20px
   &:hover
     cursor: pointer
   +mobile()
@@ -142,57 +144,51 @@
     font-size: 3vw
     line-height: 5vw
 
-// .card-footer-container
-// width: 100%
-// border-radius: 0px 0px 10px 10px
-// background-color: $soft-white
-// display: flex
-// justify-content: center
-// padding: 20px 0px
-// height: 60px
-// +mobile()
-//   height: auto
-//   padding: 3vw 0px
-// .card-footer-content-container
-//   width: 80%
-//   display: flex
-//   flex-wrap: wrap
-//   justify-content: space-between
-//   flex-direction: row
-//   +mobile
-//     margin: 3vw 0px
-//   .card-footer-content-left
-//     width: 40%
-//     display: flex
-//     flex-direction: column
-//     justify-content: flex-start
-//   .card-footer-content-right
-//     width: 40%
-//     display: flex
-//     flex-direction: column
-//     justify-content: flex-start
-//
-//
-//
-// .footer-text-container
-//   display: flex
-//   flex-direction: row
-//   align-items: center
-//   justify-content: flex-start
-//   margin: 5px
-//   +mobile
-//     margin: 2vw 0px
-//   .fa-card-icon
-//     color: $modal-gray
-//     font-size: 12px
-//     margin-right: 10px
-//     +mobile()
-//       font-size: 3vw
-//   .footer-text
-//     padding: 0
-//     margin: 0
-//     @include regular-font
-//     font-size: 12px
-//     color: $charcoal
-//     +mobile()
-//       font-size: 3vw
+.card-footer-container
+  width: 100%
+  border-radius: 0px 0px 10px 10px
+  background-color: $soft-white
+  display: flex
+  justify-content: center
+  padding: 20px 0px
+  height: 60px
+  margin-top: 20px
+  +mobile()
+    height: auto
+    padding: 3vw 0px
+  .card-footer-content-left
+    width: 40%
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    margin-left: 50px
+  .card-footer-content-right
+    width: 40%
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    margin-left: 20px
+
+
+.footer-text-container
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: flex-start
+  margin: 5px
+  +mobile
+    margin: 2vw 0px
+  .fa-card-icon
+    color: $modal-gray
+    font-size: 12px
+    margin-right: 10px
+    +mobile()
+      font-size: 3vw
+  .footer-text
+    padding: 0
+    margin: 0
+    @include regular-font
+    font-size: 12px
+    color: $charcoal
+    +mobile()
+      font-size: 3vw

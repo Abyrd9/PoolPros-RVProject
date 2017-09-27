@@ -16,103 +16,109 @@
       left: 0
       width: 100%
       margin-top: 10px
-    .nav-left-content
+
+
+.nav-left-content
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  +mobile()
+    align-items: center
+  .logo
+    +medium()
+      width: 20vw
+    +mobile()
+      width: 35vw
+      margin: 8px
+      margin-left: 20px
+
+
+.nav-right-content
+  position: relative
+  display: flex
+  flex-direction: row
+  justify-content: flex-end
+  align-items: center
+  +mobile()
+    margin-right: 10px
+    align-items: center
+  .navigation-container
+    display: flex
+    flex-direction: row
+    height: 100%
+    +mobile()
+      display: none
+    a
+      text-decoration: none
+      color: none
+      height: 100%
+    .navigation-list
+      height: 100%
+      padding: 0px 30px
+      @include bold-font
+      color: $dark-blue
+      font-size: 15px
       display: flex
       align-items: center
-      justify-content: flex-start
-      +mobile()
-        align-items: center
-      .logo
-        +medium()
-          width: 20vw
-        +mobile()
-          width: 35vw
-          margin: 8px
-          margin-left: 20px
-    .nav-right-content
-      position: relative
-      display: flex
-      flex-direction: row
-      justify-content: flex-end
-      align-items: center
-      +mobile()
-        margin-right: 10px
-        align-items: center
-      .navigation-container
-        display: flex
-        flex-direction: row
-        height: 100%
-        +mobile()
-          display: none
-        a
-          text-decoration: none
-          color: none
-          height: 100%
-        .navigation-list
-          height: 100%
-          padding: 0px 30px
-          @include bold-font
-          color: $dark-blue
-          font-size: 15px
-          display: flex
-          align-items: center
-          &:hover
-            transition: all ease .3s
-            cursor: pointer
-            background-color: $light-blue
-            color: white
-          +medium()
-            padding: 0px 2vw
-      .nav-button
-        display: flex
-        flex-direction: row
-        align-items: center
-        background-color: white
-        border: 2px solid $light-blue
-        border-radius: 3px
-        padding: 15px 20px
-        margin-left: 30px
-        &:hover
-          cursor: pointer
-        +medium()
-          padding: 1vw 1.5vw
-          margin-left: .5vw
-        +mobile()
-          padding: 10px 12px
-          margin: 0px 10px
-          border: 3px solid $light-blue
-          margin-right: 20px
-        .fa-map-marker
-          margin: 0
-          padding: 0
-          margin-right: 10px
-          color: $light-blue
-          font-size: 20px
-          +medium()
-            font-size: 2vw
-          +mobile()
-            margin-right: 10px
-            font-size: 3.5vw
-        .nav-button-text
-          margin: 0
-          padding: 0
-          @include bold-font
-          color: $light-blue
-          font-size: 15px
-          +medium()
-            font-size: 1.5vw
-          +mobile()
-            display: none
-        .nav-button-text-mobile
-          margin: 0
-          padding: 0
-          display: none
-          +mobile()
-            display: block
-            @include extra-bold-font
-            color: $light-blue
-            text-transform: uppercase
-            font-size: 2.5vw
+      &:hover
+        transition: all ease .3s
+        cursor: pointer
+        background-color: $light-blue
+        color: white
+      +medium()
+        padding: 0px 2vw
+
+.nav-button
+  display: flex
+  flex-direction: row
+  align-items: center
+  background-color: white
+  border: 2px solid $light-blue
+  border-radius: 3px
+  padding: 15px 20px
+  margin-left: 30px
+  &:hover
+    cursor: pointer
+  +medium()
+    padding: 1vw 1.5vw
+    margin-left: .5vw
+  +mobile()
+    padding: 1vw 1.5vw
+    margin: 0px 10px
+    border: 3px solid $light-blue
+    margin-right: 20px
+  .fa-map-marker
+    margin: 0
+    padding: 0
+    margin-right: 10px
+    color: $light-blue
+    font-size: 20px
+    +medium()
+      font-size: 2vw
+    +mobile()
+      margin-right: 10px
+      font-size: 3.5vw
+  .nav-button-text
+    margin: 0
+    padding: 0
+    @include bold-font
+    color: $light-blue
+    font-size: 15px
+    +medium()
+      font-size: 1.5vw
+    +mobile()
+      display: none
+  .nav-button-text-mobile
+    margin: 0
+    padding: 0
+    display: none
+    +mobile()
+      display: block
+      @include extra-bold-font
+      color: $light-blue
+      text-transform: uppercase
+      font-size: 2.5vw
+
 .menu-toggle-button
   display: none
   +mobile()
@@ -124,8 +130,8 @@
     border-radius: 100%
     box-shadow: 0 1px 6px rgba(0,0,0,0.34), 0 4px 6px rgba(0,0,0,0.43)
     background-color: white
-    &:hover
-      cursor: pointer
+  &:hover
+    cursor: pointer
   .toggle-button-bars
     +mobile()
       margin-right: 20%

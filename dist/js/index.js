@@ -160,75 +160,24 @@ const dataSifting = {
 const cardModal = {
   //create the modal and insert into DOM
   createModal: (button) => {
-
-    // <div class='modal-input-container'>
-    //   <h3 class='input-title'>first and last name</h3>
-    //   <i class='fa fa-check fa-modal-check' aria-hidden='true'></i>
-    //   <input id='name' oninput='cardModal.modalInputChange(this, this.value)' type='text' placeholder='' name='name' class='modal-input'>
-    // </div>
-
-    const dealerTitle = button.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].innerHTML;
-    const modal = `
-      <div class='modal-card'>
-        <div class='modal-header-container'>
-              <h4 class='modal-title-one'>email</h4>
-              <h2 class='modal-title-two'>${dealerTitle}</h2>
-              <i class='fa fa-times fa-modal-x' aria-hidden='true'></i>
-        </div>
-        <div class='modal-content-container'>
-          <p class='modal-content-text'>Fill out the form below and Premium Pools & Spas of Charlotte will get in touch.</p>
-          <form action='' class='modal-form-container'>
-            ${}
-            <div class='modal-input-container'>
-              <h3 class='input-title'>comments or questions</h3>
-              <p class='input-optional'>optional</p>
-              <textarea id='comment' oninput='cardModal.modalInputChange(this, this.value)' rows='5' type='text' placeholder='' name='comments-questions' class='modal-input modal-textarea'></textarea>
-            </div>
-            <div class='modal-input-container'>
-              <h3 class='input-title'>do you currently own a pool or spa?</h3>
-              <p class='input-optional' id='optional-second'>optional</p>
-              <input type='button' value='Yes' class='modal-input-button'>
-              <input type='button' value='No' class='modal-input-button'>
-              <div class='modal-button-container-mobile'>
-                <input type='button' class='modal-button-mobile'>
-                <p class='modal-button-text'>Yes</p>
-                <input type='button' class='modal-button-mobile'>
-                <p class='modal-button-text'>No</p>
-              </div>
-            </div>
-            <div class='form-footer-container'>
-              <button class='form-footer-button'>
-                <p class='form-button-text'>Send my email</p>
-                <i class='fa fa-chevron-right form-button-arrow' aria-hidden='true'></i>
-              </button>
-            </div>
-          </form>
-        </div>
-        <div class='modal-footer-container'>
-          <p class='modal-footer-text'>
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
-          </p>
-        </div>
-      </div>
-    `;
-    const modalContainer = document.createElement('div');
-    modalContainer.classList.add('full-modal-container');
-    document.body.append(modalContainer);
-    modalContainer.innerHTML = modal;
-    modalContainer.classList.toggle('visible');
+    //Add dealer Title from specific dealer to the Modal Title
+    let dealerTitle = button.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].innerHTML;
+    console.log(dealerTitle)
+    const modalTitle = document.querySelector(".modal-title-two");
+    modalTitle.innerHTML = dealerTitle;
     const modalCard = modalContainer.childNodes[1];
     //fire off function for animating modal
     cardModal.modalAnimation(modalContainer, modalCard);
     //fire off function for exiting modal
-    cardModal.deleteModal(modalContainer, modalCard);
+    cardModal.deleteModal(modalContainer, modalCard, modalTitle);
   },
   //delete the modal off the screen, either from the x button or the send email
-  deleteModal: (modalContainer, modalCard) => {
-    const exitButton = document.querySelector('.fa-modal-x');
-    const sendButton = document.querySelector('.form-footer-button');
+  deleteModal: (modalContainer, modalCard, modalTitle) => {
+    const exitButton = document.querySelector(".fa-modal-x");
+    const sendButton = document.querySelector(".form-footer-button");
     exitButton.addEventListener('click', () => {
       cardModal.modalAnimation(modalContainer, modalCard)
-      setTimeout(() => document.body.removeChild(modalContainer), 500)
+      modalTitle.innerHTML = ""
     })
     sendButton.addEventListener('click', () => {
       cardModal.sendEmail(modalContainer, modalCard);
@@ -236,44 +185,47 @@ const cardModal = {
   },
   //toggle the animation for the modal
   modalAnimation: (modalContainer, modalCard) => {
-    if (modalContainer.classList.contains('show')) {
-      setTimeout(() => modalCard.classList.toggle('card-reveal'), 100)
-      setTimeout(() => modalContainer.classList.toggle('show'), 200)
+    const modalContainer = document.querySelector(".full-modal-container");
+    if (modalContainer.classList.contains("show-modal")) {
+      setTimeout(() => modalCard.classList.toggle("card-reveal"), 100)
+      setTimeout(() => modalContainer.classList.toggle("show-modal"), 200)
+      modalContainer.classList.toggle("visible");
     } else {
-      setTimeout(() => modalContainer.classList.toggle('show'), 100)
-      setTimeout(() => modalCard.classList.toggle('card-reveal'), 200)
+      modalContainer.classList.toggle("visible");
+      setTimeout(() => modalContainer.classList.toggle("show-modal"), 100)
+      setTimeout(() => modalCard.classList.toggle("card-reveal"), 200)
     }
   },
   //Validate that the correct values are being enetered into the modal input fields
   modalInputChange: function(input, inputValue) {
     const check = input.parentNode.childNodes[1].childNodes[3];
-    if (input.id === 'name') {
+    if (input.id === "name") {
       if (inputValue.length >= 5 && typeof inputValue === 'string') {
         check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
-      } else if (inputValue === '' || inputValue.length < 5 || typeof inputValue !== 'string') {
+      } else if (inputValue === "" || inputValue.length < 5 || typeof inputValue !== 'string') {
         check.classList.remove('modal-checked')
       }
-    } else if (input.id === 'phone') {
+    } else if (input.id === "phone") {
       if (inputValue.length >= 10 && typeof inputValue !== 'NaN') {
         check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
-      } else if (inputValue === '' || inputValue.length < 10 || typeof inputValue === 'NaN') {
+      } else if (inputValue === "" || inputValue.length < 10 || typeof inputValue === 'NaN') {
         check.classList.remove('modal-checked')
       }
-    } else if (input.id === 'email') {
-      if (inputValue.length >= 5 && inputValue.includes('@' && '.com')) {
+    } else if (input.id === "email") {
+      if (inputValue.length >= 5 && inputValue.includes("@" && ".com")) {
         check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
-      } else if (inputValue === '' || inputValue.length < 5 || !inputValue.includes('@' && '.com')) {
+      } else if (inputValue === "" || inputValue.length < 5 || !inputValue.includes("@" && ".com")) {
         check.classList.remove('modal-checked')
       }
     }
   },
   //make sure all required inputs are filled out before sending (not actually sending anything)
   sendEmail: (modalContainer, modalCard) => {
-    const modalForms = document.querySelector('.modal-form-container');
-    const checks = document.querySelectorAll('.modal-checked');
+    const modalForms = document.querySelector(".modal-form-container");
+    const checks = document.querySelectorAll(".modal-checked");
     if (checks.length === 3) {
       cardModal.modalAnimation(modalContainer, modalCard)
-      setTimeout(() => document.body.removeChild(modalContainer), 500)
+      modalTitle.innerHTML = ""
     }
   }
 }
@@ -304,10 +256,12 @@ const handlers = {
       cardButtons[i].addEventListener('click', e => {
         if (e.target.classList.contains('card-button')) {
           let button = e.target;
-          cardModal.createModal(button)
+          console.log(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].innerHTML);
+          // cardModal.createModal(button)
         } else {
           let button = e.target.parentNode;
-          cardModal.createModal(button)
+          console.log(e.target.parentNodee.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].innerHTML)
+          // cardModal.createModal(button)
         }
       })
     }
@@ -316,17 +270,14 @@ const handlers = {
   mobileNavEventListener: () => {
     const mobileNavToggleButton = document.querySelector('.menu-toggle-button');
     mobileNavToggleButton.addEventListener('click', (e) => {
-      mobileMenu.createMobileNav();
+      mobileMenu.openMobileNav();
     })
   },
   //Create event listener for the exit button on the navigation on mobile screens
-  mobileNavExitEventListener: () => {
+  mobileNavExitEventListener: (mobileNavigationContainer) => {
     const mobileNavExitButton = document.querySelector('.fa-nav-x');
     mobileNavExitButton.addEventListener('click', (e) => {
-      const mobileNavHolder = document.querySelector('.mobile-nav-holder');
-      mobileNavHolder.classList.toggle('nav-reveal');
-      const mobileNav = e.target.parentNode.parentNode.parentNode.parentNode;
-      setTimeout(() => document.body.removeChild(mobileNav), 300)
+      mobileMenu.closeMobileNav(mobileNavigationContainer)
     })
   },
   //Create event listener for the filter list on the mobile screen
@@ -341,43 +292,17 @@ const handlers = {
 
 //all functions to do with the navigation menu on mobile
 const mobileMenu = {
-  //creating the mobile menu
-  createMobileNav: () => {
-    const mobileNav = `
-      <div class='mobile-nav-container'>
-        <div class='mobile-nav-header-container'>
-          <div class='header-exit-button-container'>
-            <i class='fa fa-times fa-nav-x' aria-hidden='true'></i>
-          </div>
-          <h2 class='mobile-nav-title'>menu</h2>
-        </div>
-        <ul class='mobile-nav-content-container'>
-          <a href='#'><li class='mobile-nav'>
-            <p class='mobile-nav-text'>pools & spas</p>
-            <i class='fa fa-chevron-right fa-chevron-nav' aria-hidden='true'></i>
-          </li></a>
-          <a href='#'><li class='mobile-nav'>
-            <p class='mobile-nav-text'>supplies</p>
-            <i class='fa fa-chevron-right fa-chevron-nav' aria-hidden='true'></i>
-          </li></a>
-          <a href='#'><li class='mobile-nav'>
-            <p class='mobile-nav-text'>resources</p>
-            <i class='fa fa-chevron-right fa-chevron-nav' aria-hidden='true'></i>
-          </li></a>
-          <a href='#'><li class='mobile-nav'>
-            <p class='mobile-nav-text'>services</p>
-            <i class='fa fa-chevron-right fa-chevron-nav' aria-hidden='true'></i>
-          </li></a>
-        </ul>
-      </div>
-    `;
-    const mobileNavHolder = document.createElement('div');
-    mobileNavHolder.classList.add('mobile-nav-holder');
-    document.body.append(mobileNavHolder);
-    mobileNavHolder.innerHTML = mobileNav;
-    const mobileNavContainer = document.querySelector('.mobile-nav-container');
-    setTimeout(() => mobileNavHolder.classList.toggle('nav-reveal'), 100);
-    handlers.mobileNavExitEventListener();
+  //opening the mobile menu
+  openMobileNav: () => {
+    const mobileNavigationContainer = document.querySelector('.mobile-navigation-full-container');
+    mobileNavigationContainer.classList.add('show')
+    setTimeout(() => mobileNavigationContainer.classList.add('mobile-navigation-reveal'), 100);
+    handlers.mobileNavExitEventListener(mobileNavigationContainer);
+  },
+  //closing the mobile menu
+  closeMobileNav: (mobileNavigationContainer) => {
+    mobileNavigationContainer.classList.remove('show')
+    mobileNavigationContainer.classList.remove('mobile-navigation-reveal');
   }
 }
 
