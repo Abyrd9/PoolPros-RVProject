@@ -1,3 +1,4 @@
+/* Filter Container */
 .filter-bar-full
   margin-top: 9vw
   .filter-bar
@@ -10,158 +11,162 @@
       border-radius: 0px
       flex-direction: column
       padding-bottom: 30px
-    .filter-bar-text-container
-      height: 100%
+
+/* Filter Left Side -- not the filter buttons */
+.filter-bar-text-container
+  height: 100%
+  display: flex
+  flex-direction: row
+  align-items: center
+  +mobile()
+    height: auto
+    width: 80%
+    justify-content: space-between
+    padding-top: 20px
+  .filter-bar-text
+    margin: 20px
+    font-size: 18px
+    +medium()
+      font-size: 1.5vw
+      margin: 2vw
+    +mobile()
       display: flex
       flex-direction: row
-      align-items: center
-      +mobile()
-        height: auto
-        width: 80%
-        justify-content: space-between
-        padding-top: 20px
-      .filter-bar-text
-        margin: 20px
-        font-size: 18px
-        +medium()
-          font-size: 1.5vw
-          margin: 2vw
-        +mobile()
-          display: flex
-          flex-direction: row
-          margin: 0 10px
-          font-size: 3vw
-      .filter-left-text
-        @include bold-font
-        color: $light-blue
-      .filter-split-bar
-        height: 80%
-        width: 3px
-        background-color: $light-gray
-        +mobile()
-          display: none
-      .filter-right-text-container
-        margin: 0
-        padding: 0
-        +mobile()
-          display: flex
-          flex-direction: row
-        .filter-right-text
-          @include bold-font
-          color: $charcoal
-          +mobile()
-            background-color: white
-            border: 1px solid $dark-gray
-            border-bottom: 0px
-            padding: 10px
-            margin-right: 0
-        .filter-bar-right-button
-          display: none
-          +mobile()
-            display: flex
-            padding: 14px 16px
-            border: 1px solid $dark-gray
-            border-left: 0px
-            border-bottom: 0px
-            &:hover
-              cursor: pointer
-          .fa-filter-arrow
-            font-size: 3vw
-            transition: all .3s ease
-            transform: rotate(0)
-          .arrow-toggle
-            transition: all .3s ease
-            transform: rotate(180deg)
-    .filter-list-container
+      margin: 0 10px
+      font-size: 3vw
+  .filter-left-text
+    @include bold-font
+    color: $light-blue
+  .filter-split-bar
+    height: 80%
+    width: 3px
+    background-color: $light-gray
+    +mobile()
+      display: none
+  .filter-right-text-container
+    margin: 0
+    padding: 0
+    +mobile()
       display: flex
       flex-direction: row
-      align-items: center
-      justify-content: space-between
+    .filter-right-text
+      @include bold-font
+      color: $charcoal
       +mobile()
-        flex-direction: column
         background-color: white
-        justify-content: flex-start
-        align-items: flex-start
-        width: 80%
         border: 1px solid $dark-gray
-        display: none
-        opacity: 0
-        transition: all ease .3s
-    .filter-open
+        border-bottom: 0px
+        padding: 10px
+        margin-right: 0
+    .filter-bar-right-button
+      display: none
       +mobile()
         display: flex
-    .filter-reveal
-      +mobile()
-        opacity: 1
-        transition: all ease .3s
-      .filter-input-container
-        display: flex
-        flex-direction: row
-        align-items: center
-        margin: 15px
-        +medium()
-          margin: 1vw
-      .checkbox-input-container
-        position: relative
-        display: flex
-        justify-content: center
-        align-items: center
-        margin: 10px
-        label
-          display: block
-          width: 22px
-          height: 22px
-          border-radius: 5px
-          position: relative
-          cursor: pointer
-          z-index: 1
-          background-color: white
-          border: 1px solid $dark-gray
-          display: flex
-          justify-content: center
-          align-items: center
-          &::after
-            display: block
-            content: ""
-            position: absolute
-            width: 8px
-            height: 8px
-            background-color: white
-            +mobile()
-              width: 2vw
-              height: 2vw
-          &:hover
-            transition: background-color ease .2s
-            background-color: rgba(33, 109, 223, .05)
-          +mobile()
-            width: 5vw
-            height: 5vw
-        .checked
-          background-color: $light-blue
-        input[type=checkbox]
-          position: absolute
-          visibility: hidden
-      .input-text
-        @include regular-font
-        text-transform: capitalize
-        font-size: 12px
-        +mobile()
-          font-size: 3vw
-      .question-button
-        @include bold-font
-        font-size: 10px
-        color: $light-blue
-        background-color: $dark-gray
-        width: 20px
-        height: 20px
-        border-radius: 3px
-        margin-left: 15px
+        padding: 14px 16px
+        border: 1px solid $dark-gray
+        border-left: 0px
+        border-bottom: 0px
         &:hover
           cursor: pointer
+      .fa-filter-arrow
+        font-size: 3vw
+        transition: all .3s ease
+        transform: rotate(0)
+      .arrow-toggle
+        transition: all .3s ease
+        transform: rotate(180deg)
+
+/* Filter Buttons */            
+.filter-list-container
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+  +mobile()
+    flex-direction: column
+    background-color: white
+    justify-content: flex-start
+    align-items: flex-start
+    width: 80%
+    border: 1px solid $dark-gray
+    display: none
+    opacity: 0
+    transition: all ease .3s
+.filter-open
+  +mobile()
+    display: flex
+.filter-reveal
+  +mobile()
+    opacity: 1
+    transition: all ease .3s
+  .filter-input-container
+    display: flex
+    flex-direction: row
+    align-items: center
+    margin: 15px
+    +medium()
+      margin: 1vw
+  .checkbox-input-container
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    margin: 10px
+    label
+      display: block
+      width: 22px
+      height: 22px
+      border-radius: 5px
+      position: relative
+      cursor: pointer
+      z-index: 1
+      background-color: white
+      border: 1px solid $dark-gray
+      display: flex
+      justify-content: center
+      align-items: center
+      &::after
+        display: block
+        content: ""
+        position: absolute
+        width: 8px
+        height: 8px
+        background-color: white
         +mobile()
-          width: 5vw
-          height: 5vw
-          font-size: 2.5vw
+          width: 2vw
+          height: 2vw
+      &:hover
+        transition: background-color ease .2s
+        background-color: rgba(33, 109, 223, .05)
+      +mobile()
+        width: 5vw
+        height: 5vw
+    .checked
+      background-color: $light-blue
+    input[type=checkbox]
+      position: absolute
+      visibility: hidden
+  .input-text
+    @include regular-font
+    text-transform: capitalize
+    font-size: 12px
+    +mobile()
+      font-size: 3vw
+  .question-button
+    @include bold-font
+    font-size: 10px
+    color: $light-blue
+    background-color: $dark-gray
+    width: 20px
+    height: 20px
+    border-radius: 3px
+    margin-left: 15px
+    &:hover
+      cursor: pointer
+    +mobile()
+      width: 5vw
+      height: 5vw
+      font-size: 2.5vw
 
 .arrow-toggle-border
   border-bottom: 1px solid $dark-gray !important

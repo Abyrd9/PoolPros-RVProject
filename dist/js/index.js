@@ -1,5 +1,5 @@
 
-//All function having to do with the filter
+//ALl functions related to the dealers filter
 const filter = {
 
   // initial filter status
@@ -10,32 +10,60 @@ const filter = {
     {name: 'fourthInput', status: true, certifications: 'Commercial Pro'}
   ],
 
-  // fetch json data
+  // fetch dealer json data
   fetchData: (filterStatus) => {
     fetch('https://api.myjson.com/bins/lgb21')
       .then(res => {
-        res.json().then(function(data) {
+        res.json().then(data => {
+          //update the rendered cards with the correct dealers based on the filter
           filter.updateStatus(filterStatus, data)
         })
       })
   },
 
-  //fired from filter button events - update the filterStatus array
+  //create Event Listener for filter buttons, fire off a filter status update when clicked
+  filterInputEventListener: () => {
+    const checkboxContainers = document.querySelectorAll('.checkbox-input-container');
+    for (let i = 0; i < checkboxContainers.length; i++) {
+      checkboxContainers[i].childNodes[1].addEventListener('click', (e) => {
+        e.target.classList.toggle('checked')
+        inputCheck = e.target.nextSibling.nextSibling.checked;
+        //match the filter status array number with the array number of the filter button. Change the status to the opposite of the current.
+        filter.filterStatus.forEach((element, index, array) => {
+          if (index === i) {
+            array[i].status = !array[i].status
+          }
+        })
+        //fetch the json Data
+        filter.fetchData(filter.filterStatus)
+      })
+    }
+  },
+
+  //Create event listener for the filter list toggle on the mobile screen
+  mobileFilterToggleEventListener: () => {
+    const filterResultsButton = document.querySelector('.filter-bar-right-button');
+    filterResultsButton.addEventListener('click', (e) => {
+      mobileFilter.mobileFilterToggle(e.target);
+    })
+  },
+
   updateStatus: (filterStatus, data) => {
-    // set new certificantions array
-    cert = [];
+    // set new certifications array
+    certifications = [];
     // get dealers array from Json data
     dealers = data.dealers;
-    // from the filter status array, take all true certifications and place them in cert array
-    filterStatus.forEach(function(e, i, arr) {
+    // if the status of the filterStatus is true, push it into the certifications array
+    filterStatus.forEach((el, i, arr) => {
       if (arr[i].status === true) {
-        while(cert.length < 0) {
-          cert.pop();
+        //remove all current items in the certifications array
+        while(certifications.length < 0) {
+          certifications.pop();
         }
-        cert.push(e.certifications)
+        certifications.push(el.certifications)
       }
     })
-    filter.filterCards(cert, dealers, data)
+    filter.filterCards(certifications, dealers, data)
   },
 
   // render cards based on filter values
@@ -46,13 +74,13 @@ const filter = {
     // Empty the cardContainer of any current cards
     const cardContainer = document.querySelector('.card-container');
     cardContainer.innerHTML = ''
-    // if any value in the dealer certifications array matches any value in the cert array, fire off createCardElement
-    dealers.forEach(function(e, i, arr) {
+    // if any value in the dealer's certifications array matches any value in the certifications array, fire off createCardElement
+    dealers.forEach((e, i, arr) => {
       // set cardDate for the specific individual dealer
       const cardData = e
       // set function for comparing values between both arrays
-      const isMatching = function(cardDataCerts, cert) {
-        return cert.some(function(el) {
+      const isMatching = (cardDataCerts, cert) => {
+        return cert.some((el) => {
           return cardDataCerts.indexOf(el) >= 0;
         })
       }
@@ -64,10 +92,11 @@ const filter = {
       }
     })
     filter.filterInfo(filteredDealers.number, data);
-    handlers.modalEventListener();
+    cardModal.modalEventListener();
   },
 
-  filterInfo: function(number, data) {
+  //update the data on filter bar text -- far left side
+  filterInfo: (number, data) => {
     const filterTextInfo = document.querySelector('.filter-left-text');
     filterTextInfo.innerHTML = `${number} dealers in ${data.zipcode}`;
   },
@@ -130,7 +159,7 @@ const dataSifting = {
       return weekHoursObj.sat
     }
   },
-  //make sure correct certifications and icons are showing up on left side
+  //make sure correct certifications and icons are showing up on left side card footer
   footerContentFilterLeft: (cert) => {
     const starIcon = `<i class='fa fa-star fa-card-icon' aria-hidden='true'></i>`
     const houseIcon = `<i class='fa fa-home fa-card-icon' aria-hidden='true'></i>`
@@ -142,7 +171,7 @@ const dataSifting = {
       return `<div class='footer-text-container'>${currentIcon}<p class='footer-text'>${cert}</p></div>`
     }
   },
-  //make sure correct certifications and icons are showing up on right side
+  //make sure correct certifications and icons are showing up on right side card footer
   footerContentFilterRight: (cert) => {
     const cogIcon = `<i class='fa fa-cog fa-card-icon' aria-hidden='true'></i>`
     const userIcon = `<i class='fa fa-user fa-card-icon' aria-hidden='true'></i>`
@@ -156,48 +185,31 @@ const dataSifting = {
   },
 }
 
-//all functions having to do with pop-up email modal
+//all functions having to do with pop-up modal
 const cardModal = {
-  //create the modal and insert into DOM
-  createModal: (button) => {
-    //Add dealer Title from specific dealer to the Modal Title
-    let dealerTitle = button.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].innerHTML;
-    console.log(dealerTitle)
-    const modalTitle = document.querySelector(".modal-title-two");
-    modalTitle.innerHTML = dealerTitle;
-    const modalCard = modalContainer.childNodes[1];
+  //add correct title to modal and toggle animation
+  createModal: (title) => {
+    const modalTitle = document.querySelector('.modal-title-two');
+    modalTitle.innerHTML = title;
+    const modalContainer = document.querySelector('.full-modal-container')
+    const modalCard = document.querySelector('.modal-card');
     //fire off function for animating modal
     cardModal.modalAnimation(modalContainer, modalCard);
-    //fire off function for exiting modal
-    cardModal.deleteModal(modalContainer, modalCard, modalTitle);
   },
-  //delete the modal off the screen, either from the x button or the send email
-  deleteModal: (modalContainer, modalCard, modalTitle) => {
-    const exitButton = document.querySelector(".fa-modal-x");
-    const sendButton = document.querySelector(".form-footer-button");
-    exitButton.addEventListener('click', () => {
-      cardModal.modalAnimation(modalContainer, modalCard)
-      modalTitle.innerHTML = ""
-    })
-    sendButton.addEventListener('click', () => {
-      cardModal.sendEmail(modalContainer, modalCard);
-    })
-  },
-  //toggle the animation for the modal
+  //toggle the animation for the modal -- both on and off
   modalAnimation: (modalContainer, modalCard) => {
-    const modalContainer = document.querySelector(".full-modal-container");
-    if (modalContainer.classList.contains("show-modal")) {
-      setTimeout(() => modalCard.classList.toggle("card-reveal"), 100)
-      setTimeout(() => modalContainer.classList.toggle("show-modal"), 200)
-      modalContainer.classList.toggle("visible");
+    if (!modalContainer.classList.contains("show-modal")) {
+      modalContainer.classList.toggle("show-modal");
+      setTimeout(() => modalContainer.classList.toggle("reveal-modal"), 100);
+      setTimeout(() => modalCard.classList.toggle("modal-card-reveal"), 200);
     } else {
-      modalContainer.classList.toggle("visible");
-      setTimeout(() => modalContainer.classList.toggle("show-modal"), 100)
-      setTimeout(() => modalCard.classList.toggle("card-reveal"), 200)
+      modalCard.classList.toggle("modal-card-reveal");
+      setTimeout(() => modalContainer.classList.toggle("reveal-modal"), 100);
+      setTimeout(() => modalContainer.classList.toggle("show-modal"), 200);
     }
   },
   //Validate that the correct values are being enetered into the modal input fields
-  modalInputChange: function(input, inputValue) {
+  modalInputChange: (input, inputValue) => {
     const check = input.parentNode.childNodes[1].childNodes[3];
     if (input.id === "name") {
       if (inputValue.length >= 5 && typeof inputValue === 'string') {
@@ -219,53 +231,39 @@ const cardModal = {
       }
     }
   },
-  //make sure all required inputs are filled out before sending (not actually sending anything)
-  sendEmail: (modalContainer, modalCard) => {
-    const modalForms = document.querySelector(".modal-form-container");
-    const checks = document.querySelectorAll(".modal-checked");
-    if (checks.length === 3) {
-      cardModal.modalAnimation(modalContainer, modalCard)
-      modalTitle.innerHTML = ""
-    }
-  }
-}
 
-// all Event Listeners
-const handlers = {
-  //create Event Listener for inputs, fire-off state change when clicked
-  filterInputEventListener: () => {
-    //pull node list containing all checkbox input containers
-    const checkboxContainers = document.querySelectorAll('.checkbox-input-container');
-    for (let i = 0; i < checkboxContainers.length; i++) {
-      checkboxContainers[i].childNodes[1].addEventListener('click', (e) => {
-        e.target.classList.toggle('checked')
-        inputCheck = e.target.nextSibling.nextSibling.checked;
-        filter.filterStatus.forEach(function(element, index, array) {
-          if (index === i) {
-            array[i].status = !array[i].status
-          }
-        })
-        filter.fetchData(filter.filterStatus)
-      })
-    }
-  },
   //Create event listener for the card buttons once they are inserted into DOM
   modalEventListener: () => {
     const cardButtons = document.querySelectorAll('.card-button');
-    for (let i = 0; i < cardButtons.length; i++) {
-      cardButtons[i].addEventListener('click', e => {
+    Array.prototype.map.call(cardButtons, (el) => {
+      el.addEventListener('click', e => {
         if (e.target.classList.contains('card-button')) {
-          let button = e.target;
-          console.log(e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].innerHTML);
-          // cardModal.createModal(button)
+          let title = e.target.parentNode.parentNode.childNodes[1].childNodes[1].innerHTML;
+          cardModal.createModal(title)
         } else {
-          let button = e.target.parentNode;
-          console.log(e.target.parentNodee.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[1].innerHTML)
-          // cardModal.createModal(button)
+          let title = e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].innerHTML;
+          cardModal.createModal(title)
         }
       })
-    }
+    })
   },
+  //Create event listener for the x button and send button on the pop-up modal
+  deleteModalEventListener: () => {
+    const exitButton = document.querySelector(".fa-modal-x");
+    const sendButton = document.querySelector(".form-footer-button");
+    const modalContainer = document.querySelector('.full-modal-container')
+    const modalCard = document.querySelector('.modal-card');
+    exitButton.addEventListener('click', () => {
+      cardModal.modalAnimation(modalContainer, modalCard);
+    })
+    sendButton.addEventListener('click', () => {
+      cardModal.modalAnimation(modalContainer, modalCard);
+    })
+  },
+}
+
+//all functions to do with the navigation menu on mobile
+const mobileMenu = {
   //Create event listener for navigation toggling button on mobile screens
   mobileNavEventListener: () => {
     const mobileNavToggleButton = document.querySelector('.menu-toggle-button');
@@ -280,24 +278,12 @@ const handlers = {
       mobileMenu.closeMobileNav(mobileNavigationContainer)
     })
   },
-  //Create event listener for the filter list on the mobile screen
-  mobileFilterToggleEventListener: () => {
-    const filterResultsButton = document.querySelector('.filter-bar-right-button');
-    filterResultsButton.addEventListener('click', (e) => {
-      mobileFilter.mobileFilterToggle(e.target);
-    })
-  }
-
-}
-
-//all functions to do with the navigation menu on mobile
-const mobileMenu = {
   //opening the mobile menu
   openMobileNav: () => {
     const mobileNavigationContainer = document.querySelector('.mobile-navigation-full-container');
     mobileNavigationContainer.classList.add('show')
     setTimeout(() => mobileNavigationContainer.classList.add('mobile-navigation-reveal'), 100);
-    handlers.mobileNavExitEventListener(mobileNavigationContainer);
+    mobileMenu.mobileNavExitEventListener(mobileNavigationContainer);
   },
   //closing the mobile menu
   closeMobileNav: (mobileNavigationContainer) => {
@@ -329,6 +315,7 @@ const mobileFilter = {
 //fetch json data
 filter.fetchData(filter.filterStatus);
 //create event listeners
-handlers.filterInputEventListener();
-handlers.mobileNavEventListener();
-handlers.mobileFilterToggleEventListener();
+cardModal.deleteModalEventListener();
+filter.filterInputEventListener();
+mobileMenu.mobileNavEventListener();
+filter.mobileFilterToggleEventListener();

@@ -1,9 +1,12 @@
+
+/* Card Container */
 .card-container-full
   margin: 25px 0px
   .card-container
     display: flex
     flex-flow: wrap
 
+/* Card Start */
 .card
   max-width: 400px
   margin: 15px
@@ -42,6 +45,7 @@
       +mobile()
         font-size: 5vw
 
+/* Card Middle Content */
 .card-content-container
   width: 100%
   display: flex
@@ -95,6 +99,7 @@
       font-size: 2.5vw
       padding: 10px 0px
 
+/* Card Button */
 .card-button
   display: flex
   flex-direction: row
@@ -124,6 +129,7 @@
       font-size: 4vw
       color: $dark-blue
 
+/* Card Content - dealer hours */
 .card-content-bottom-title
   padding: 0
   margin: 0
@@ -144,6 +150,7 @@
     font-size: 3vw
     line-height: 5vw
 
+/* Card Footer */
 .card-footer-container
   width: 100%
   border-radius: 0px 0px 10px 10px
@@ -162,12 +169,16 @@
     flex-direction: column
     justify-content: flex-start
     margin-left: 50px
+    +mobile()
+      margin-left: 6vw
   .card-footer-content-right
     width: 40%
     display: flex
     flex-direction: column
     justify-content: flex-start
     margin-left: 20px
+    +mobile()
+      margin-left: 6vw
 
 
 .footer-text-container
