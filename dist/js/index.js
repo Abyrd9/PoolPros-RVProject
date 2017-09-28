@@ -199,6 +199,7 @@ const cardModal = {
   //toggle the animation for the modal -- both on and off
   modalAnimation: (modalContainer, modalCard) => {
     if (!modalContainer.classList.contains('show-modal')) {
+      document.body.classList.toggle('no-scroll');
       modalContainer.classList.toggle('show-modal');
       setTimeout(() => modalContainer.classList.toggle('reveal-modal'), 100);
       setTimeout(() => modalCard.classList.toggle('modal-card-reveal'), 200);
@@ -206,6 +207,7 @@ const cardModal = {
       modalCard.classList.toggle('modal-card-reveal');
       setTimeout(() => modalContainer.classList.toggle('reveal-modal'), 100);
       setTimeout(() => modalContainer.classList.toggle('show-modal'), 200);
+      document.body.classList.toggle('no-scroll');
     }
   },
   //Validate that the correct values are being enetered into the modal input fields

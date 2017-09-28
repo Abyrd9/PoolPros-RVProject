@@ -13,6 +13,11 @@ body {
   display: flex;
   justify-content: center; }
 
+.no-scroll {
+  margin: 0;
+  height: 100%;
+  overflow: hidden; }
+
 .main-container {
   flex: 0 0 90%;
   display: flex;
@@ -742,7 +747,8 @@ a {
       .full-modal-container .modal-card {
         max-width: 100%;
         width: 95%;
-        margin-top: 20vw; } }
+        position: absolute;
+        top: 20px; } }
   .full-modal-container .modal-card-reveal {
     transition: all ease 0.3s;
     opacity: 1;
