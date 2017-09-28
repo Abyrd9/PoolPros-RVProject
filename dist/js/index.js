@@ -198,35 +198,35 @@ const cardModal = {
   },
   //toggle the animation for the modal -- both on and off
   modalAnimation: (modalContainer, modalCard) => {
-    if (!modalContainer.classList.contains("show-modal")) {
-      modalContainer.classList.toggle("show-modal");
-      setTimeout(() => modalContainer.classList.toggle("reveal-modal"), 100);
-      setTimeout(() => modalCard.classList.toggle("modal-card-reveal"), 200);
+    if (!modalContainer.classList.contains('show-modal')) {
+      modalContainer.classList.toggle('show-modal');
+      setTimeout(() => modalContainer.classList.toggle('reveal-modal'), 100);
+      setTimeout(() => modalCard.classList.toggle('modal-card-reveal'), 200);
     } else {
-      modalCard.classList.toggle("modal-card-reveal");
-      setTimeout(() => modalContainer.classList.toggle("reveal-modal"), 100);
-      setTimeout(() => modalContainer.classList.toggle("show-modal"), 200);
+      modalCard.classList.toggle('modal-card-reveal');
+      setTimeout(() => modalContainer.classList.toggle('reveal-modal'), 100);
+      setTimeout(() => modalContainer.classList.toggle('show-modal'), 200);
     }
   },
   //Validate that the correct values are being enetered into the modal input fields
   modalInputChange: (input, inputValue) => {
     const check = input.parentNode.childNodes[1].childNodes[3];
-    if (input.id === "name") {
+    if (input.id === 'name') {
       if (inputValue.length >= 5 && typeof inputValue === 'string') {
         check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
-      } else if (inputValue === "" || inputValue.length < 5 || typeof inputValue !== 'string') {
+      } else if (inputValue === '' || inputValue.length < 5 || typeof inputValue !== 'string') {
         check.classList.remove('modal-checked')
       }
-    } else if (input.id === "phone") {
+    } else if (input.id === 'phone') {
       if (inputValue.length >= 10 && typeof inputValue !== 'NaN') {
         check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
-      } else if (inputValue === "" || inputValue.length < 10 || typeof inputValue === 'NaN') {
+      } else if (inputValue === '' || inputValue.length < 10 || typeof inputValue === 'NaN') {
         check.classList.remove('modal-checked')
       }
-    } else if (input.id === "email") {
-      if (inputValue.length >= 5 && inputValue.includes("@" && ".com")) {
+    } else if (input.id === 'email') {
+      if (inputValue.length >= 5 && inputValue.includes('@' && '.com')) {
         check.classList.contains('modal-checked') ? null : check.classList.add('modal-checked');
-      } else if (inputValue === "" || inputValue.length < 5 || !inputValue.includes("@" && ".com")) {
+      } else if (inputValue === '' || inputValue.length < 5 || !inputValue.includes('@' && '.com')) {
         check.classList.remove('modal-checked')
       }
     }
@@ -249,8 +249,8 @@ const cardModal = {
   },
   //Create event listener for the x button and send button on the pop-up modal
   deleteModalEventListener: () => {
-    const exitButton = document.querySelector(".fa-modal-x");
-    const sendButton = document.querySelector(".form-footer-button");
+    const exitButton = document.querySelector('.fa-modal-x');
+    const sendButton = document.querySelector('.form-footer-button');
     const modalContainer = document.querySelector('.full-modal-container')
     const modalCard = document.querySelector('.modal-card');
     exitButton.addEventListener('click', () => {

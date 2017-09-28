@@ -28,7 +28,7 @@ body {
 .body-content-container {
   display: flex;
   flex-direction: column;
-  background-image: url("../../img/water-image.png");
+  background-image: url("./img/water-image.png");
   background-repeat: no-repeat;
   background-size: contain; }
 
@@ -272,14 +272,6 @@ a {
         height: 1vw;
         width: 6.5vw;
         border-radius: 2px; } }
-
-.header-image .image-banner {
-  width: 100vw;
-  height: 13vw; }
-  @media screen and (max-width: 750px) {
-    .header-image .image-banner {
-      width: 300vw;
-      height: 35vw; } }
 
 /* Filter Container */
 .filter-bar-full {
